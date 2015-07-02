@@ -44,21 +44,36 @@ class FormatterMy implements FormatterInterface
             $matches = array();
             preg_match_all('/^('.implode('|', array_keys($this->shortMobileCarrierPrefix)).')(.*)/', $number, $matches);
             if (!empty($matches[1]) && !empty($matches[2])){
-                return array($this->shortMobileCarrierPrefix[$matches[1][0]], $matches[1][0], $matches[2][0]);
+                return array(
+                    $this->shortMobileCarrierPrefix[$matches[1][0]],
+                    $matches[1][0],
+                    $matches[2][0],
+                    true
+                );
             }
         // with leading 0
         } elseif ($numberLen == 10) {
             $matches = array();
             preg_match_all('/^('.implode('|', $this->shortMobileCarrierPrefix).')(.*)/', $number, $matches);
             if (!empty($matches[1]) && !empty($matches[2])){
-                return array($matches[1][0], ltrim($matches[1][0], '0'), $matches[2][0]);
+                return array(
+                    $matches[1][0],
+                    ltrim($matches[1][0], '0'),
+                    $matches[2][0],
+                    true
+                );
             }
         // extended mobile numbers 011 prefix
         } elseif ($numberLen == 11) {
             $matches = array();
             preg_match_all('/^('.implode('|', $this->longMobileCarrierPrefix).')(.*)/', $number, $matches);
             if (!empty($matches[1]) && !empty($matches[2])){
-                return array($matches[1][0], ltrim($matches[1][0], '0'), $matches[2][0]);
+                return array(
+                    $matches[1][0],
+                    ltrim($matches[1][0], '0'),
+                    $matches[2][0],
+                    true
+                );
             }
         }
 
@@ -76,7 +91,12 @@ class FormatterMy implements FormatterInterface
             $matches = array();
             preg_match_all('/^('.implode('|', array_keys($this->prefixDestinationCodesShort)).')(.*)/', $number, $matches);
             if (!empty($matches[1]) && !empty($matches[2])){
-                return array($this->prefixDestinationCodesShort[$matches[1][0]], $matches[1][0], $matches[2][0]);
+                return array(
+                    $this->prefixDestinationCodesShort[$matches[1][0]],
+                    $matches[1][0],
+                    $matches[2][0],
+                    false
+                );
             }
         }
         //try extended 1 digit codes
@@ -84,7 +104,12 @@ class FormatterMy implements FormatterInterface
             $matches = array();
             preg_match_all('/^('.implode('|', $this->prefixDestinationCodesShort).')(.*)/', $number, $matches);
             if (!empty($matches[1]) && !empty($matches[2])){
-                return array($matches[1][0], ltrim($matches[1][0], '0'), $matches[2][0]);
+                return array(
+                    $matches[1][0],
+                    ltrim($matches[1][0], '0'),
+                    $matches[2][0],
+                    false
+                );
             }
         }
         //try simple 2 digit codes
@@ -92,7 +117,12 @@ class FormatterMy implements FormatterInterface
             $matches = array();
             preg_match_all('/^('.implode('|', array_keys($this->prefixDestinationCodesLong)).')(.*)/', $number, $matches);
             if (!empty($matches[1]) && !empty($matches[2])){
-                return array($this->prefixDestinationCodesLong[$matches[1][0]], $matches[1][0], $matches[2][0]);
+                return array(
+                    $this->prefixDestinationCodesLong[$matches[1][0]],
+                    $matches[1][0],
+                    $matches[2][0],
+                    false
+                );
             }
         }
         //try extended 2 digit codes
@@ -100,10 +130,15 @@ class FormatterMy implements FormatterInterface
             $matches = array();
             preg_match_all('/^('.implode('|', $this->prefixDestinationCodesLong).')(.*)/', $number, $matches);
             if (!empty($matches[1]) && !empty($matches[2])){
-                return array($matches[1][0], ltrim($matches[1][0], '0'), $matches[2][0]);
+                return array(
+                    $matches[1][0],
+                    ltrim($matches[1][0], '0'),
+                    $matches[2][0],
+                    false
+                );
             }
         }
-        return array(null, null, $number);
+        return array(null, null, $number, false);
     }
 
     public function formatNumberByDigits($number = '')
