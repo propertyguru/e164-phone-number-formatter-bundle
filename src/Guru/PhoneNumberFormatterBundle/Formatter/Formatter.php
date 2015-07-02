@@ -143,7 +143,7 @@ class Formatter
             return $E194['subscriberNumber'];
         }
 
-        return (isset($E194['countryCode']) && $E194['countryCode'] != '' ? '+'.$E194['countryCode'] : '')
+        return (!empty($E194['countryCode']) ? '+'.$E194['countryCode'] : '')
             . $this->formatNumberByDigits(
                 $E194['nationalDestinationCodeInternational'].$E194['subscriberNumber'],
                 $E194['countryCode']
