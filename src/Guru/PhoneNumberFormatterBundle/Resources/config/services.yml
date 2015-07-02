@@ -4,6 +4,7 @@ services:
         arguments: [@service_container]
         public: false
         calls:
+            - [setCountryCodes, [%guru_phone_number_formatter.country_codes%]]
             - [addRegionFormatter, ['my', @guru_phone_number_formatter.formatter_my]]
             - [addRegionFormatter, ['id', @guru_phone_number_formatter.formatter_id]]
     guru_phone_number_formatter.formatter_my:

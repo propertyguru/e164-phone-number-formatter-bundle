@@ -39,6 +39,9 @@ class Formatter
             /* When used together with the country prefix */
             'nationalDestinationCodeInternational' => null,
 
+            /* Mobile flag */
+            'isMobile' => false,
+
             /* Number structure for networks */
             /* Currently not used */
             //'networkIdentificationCode' => null,
@@ -69,12 +72,18 @@ class Formatter
         }
 
         //extract area code
-        list($nationalDestinationCode, $nationalDestinationCodeInternational, $number) = $regionFormatter->extractNationalDestinationCode($number, $countryCode);
+        list(
+            $nationalDestinationCode,
+            $nationalDestinationCodeInternational,
+            $number,
+            $isMobile
+        ) = $regionFormatter->extractNationalDestinationCode($number, $countryCode);
 
         $output['countryCode'] = $countryCode;
         $output['nationalDestinationCode'] = $nationalDestinationCode;
         $output['nationalDestinationCodeInternational'] = $nationalDestinationCodeInternational;
         $output['subscriberNumber'] = $number;
+        $output['isMobile'] = $isMobile;
 
         return $output;
     }
@@ -134,8 +143,8 @@ class Formatter
             return $E194['subscriberNumber'];
         }
 
-        return (isset($E194['countryCode']) && $E194['countryCode'] != '' ? '+'.$E194['countryCode'] : '')
-            .$this->formatNumberByDigits(
+        return (!empty($E194['countryCode']) ? '+'.$E194['countryCode'] : '')
+            . $this->formatNumberByDigits(
                 $E194['nationalDestinationCodeInternational'].$E194['subscriberNumber'],
                 $E194['countryCode']
             );

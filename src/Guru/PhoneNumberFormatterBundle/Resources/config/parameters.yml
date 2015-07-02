@@ -6,39 +6,39 @@ parameters:
         id: 62
 
     guru_phone_number_formatter.format.my.prefix.landline.short:
-        2: 02 #Domestic access code to Singapore
-        3: 03 #Selangor, Kuala Lumpur, Putrajaya & Genting Highlands, Pahang
-        4: 04 #Perlis, Kedah, Penang & Pengkalan Hulu, Perak
-        5: 05 #Perak and Cameron Highlands, Pahang
-        6: 06 #Negeri Sembilan, Melaka and Muar, Johor
-        7: 07 #Johor and Gemas, Negeri Sembilan
-        9: 09 #Kelantan, Pahang and Terengganu
+        2: '02' #Domestic access code to Singapore
+        3: '03' #Selangor, Kuala Lumpur, Putrajaya & Genting Highlands, Pahang
+        4: '04' #Perlis, Kedah, Penang & Pengkalan Hulu, Perak
+        5: '05' #Perak and Cameron Highlands, Pahang
+        6: '06' #Negeri Sembilan, Melaka and Muar, Johor
+        7: '07' #Johor and Gemas, Negeri Sembilan
+        9: '09' #Kelantan, Pahang and Terengganu
 
     guru_phone_number_formatter.format.my.prefix.landline.long:
-        80: 080 #Domestic access code from East Malaysia to Brunei
-        81: 081 #Reserved number for future use
-        82: 082 #Kuching, Sarawak
-        83: 083 #Sri Aman, Sarawak
-        84: 084 #Sarawak – Sarikei, Sibu and Kapit
-        85: 085 #Sarawak – Lawas, Limbang and Miri
-        86: 086 #Sarawak – Bintulu and Belaga
-        87: 087 #Labuan and Interior Division, Sabah
-        88: 088 #Sabah – Kota Kinabalu and Kudat
-        89: 089 #Sabah – Lahad Datu, Sandakan and Tawau
+        80: '080' #Domestic access code from East Malaysia to Brunei
+        81: '081' #Reserved number for future use
+        82: '082' #Kuching, Sarawak
+        83: '083' #Sri Aman, Sarawak
+        84: '084' #Sarawak – Sarikei, Sibu and Kapit
+        85: '085' #Sarawak – Lawas, Limbang and Miri
+        86: '086' #Sarawak – Bintulu and Belaga
+        87: '087' #Labuan and Interior Division, Sabah
+        88: '088' #Sabah – Kota Kinabalu and Kudat
+        89: '089' #Sabah – Lahad Datu, Sandakan and Tawau
 
     guru_phone_number_formatter.format.my.prefix.mobile.short:
-        10: 010
-        12: 012
-        13: 013
-        14: 014
-        15: 015
-        16: 016
-        17: 017
-        18: 018
-        19: 019
+        10: '010'
+        12: '012'
+        13: '013'
+        14: '014'
+        15: '015'
+        16: '016'
+        17: '017'
+        18: '018'
+        19: '019'
 
     guru_phone_number_formatter.format.my.prefix.mobile.long:
-        - 011
+        - '011'
 
 
     guru_phone_number_formatter.format.id.prefix.landline.lengths:
@@ -46,388 +46,388 @@ parameters:
         - 8
 
     guru_phone_number_formatter.format.id.prefix.landline.short:
-        21: 021 #Tangerang, South Tangerang
-        21: 021 #Bekasi, Depok, parts of Bogor Regency
-        22: 022 #Bandung, Cimahi, parts of Sumedang (Jatinangor)
-        24: 024 #Semarang, parts of Semarang Regency
-        31: 031 #Surabaya, Gresik, Sidoarjo, Bangkalan
-        61: 061 #Medan, Binjai, parts of Deli Serdang, parts of Serdang Bedagai (Perbaungan, Pantai Cermin), parts of Langkat
+        21: '021' #Tangerang, South Tangerang
+        21: '021' #Bekasi, Depok, parts of Bogor Regency
+        22: '022' #Bandung, Cimahi, parts of Sumedang (Jatinangor)
+        24: '024' #Semarang, parts of Semarang Regency
+        31: '031' #Surabaya, Gresik, Sidoarjo, Bangkalan
+        61: '061' #Medan, Binjai, parts of Deli Serdang, parts of Serdang Bedagai (Perbaungan, Pantai Cermin), parts of Langkat
     guru_phone_number_formatter.format.id.prefix.landline.long:
         #Banten
-        252: 0252 #Lebak
-        253: 0253 #Pandeglang
-        254: 0254 #Cilegon, Serang
+        252: '0252' #Lebak
+        253: '0253' #Pandeglang
+        254: '0254' #Cilegon, Serang
         #West Java
-        231: 0231 #Cirebon
-        232: 0232 #Kuningan
-        233: 0233 #Majalengka
-        234: 0234 #Indramayu
-        251: 0251 #Bogor city, parts of Bogor Regency
-        260: 0260 #Subang
-        261: 0261 #Sumedang
-        262: 0262 #Garut
-        263: 0263 #Cianjur
-        264: 0264 #Purwakarta
-        265: 0265 #Banjar, Ciamis, Tasikmalaya
-        266: 0266 #Sukabumi
-        267: 0267 #Karawang
+        231: '0231' #Cirebon
+        232: '0232' #Kuningan
+        233: '0233' #Majalengka
+        234: '0234' #Indramayu
+        251: '0251' #Bogor city, parts of Bogor Regency
+        260: '0260' #Subang
+        261: '0261' #Sumedang
+        262: '0262' #Garut
+        263: '0263' #Cianjur
+        264: '0264' #Purwakarta
+        265: '0265' #Banjar, Ciamis, Tasikmalaya
+        266: '0266' #Sukabumi
+        267: '0267' #Karawang
         #Central Java
-        271: 0271 #Solo, Sragen, Karanganyar, Sukoharjo, parts of Boyolali
-        272: 0272 #Klaten
-        273: 0273 #Wonogiri
-        275: 0275 #Purworejo
-        276: 0276 #Boyolali
-        280: 0280 #parts of Cilacap
-        281: 0281 #Banyumas, Purbalingga
-        282: 0282 #Cilacap
-        283: 0283 #Tegal, Brebes
-        284: 0284 #Pemalang
-        285: 0285 #Pekalongan, Batang
-        286: 0286 #Banjarnegara, Wonosobo
-        287: 0287 #Kebumen
-        289: 0289 #Bumiayu
-        291: 0291 #Kudus
-        292: 0292 #Grobogan
-        293: 0293 #Magelang, Temanggung
-        294: 0294 #Kendal, parts of Batang (Gringsing)
-        295: 0295 #Pati, Rembang
-        296: 0296 #Blora
-        297: 0297 #Karimun Jawa
-        298: 0298 #Salatiga, parts of Semarang Regency, parts of Boyolali
+        271: '0271' #Solo, Sragen, Karanganyar, Sukoharjo, parts of Boyolali
+        272: '0272' #Klaten
+        273: '0273' #Wonogiri
+        275: '0275' #Purworejo
+        276: '0276' #Boyolali
+        280: '0280' #parts of Cilacap
+        281: '0281' #Banyumas, Purbalingga
+        282: '0282' #Cilacap
+        283: '0283' #Tegal, Brebes
+        284: '0284' #Pemalang
+        285: '0285' #Pekalongan, Batang
+        286: '0286' #Banjarnegara, Wonosobo
+        287: '0287' #Kebumen
+        289: '0289' #Bumiayu
+        291: '0291' #Kudus
+        292: '0292' #Grobogan
+        293: '0293' #Magelang, Temanggung
+        294: '0294' #Kendal, parts of Batang (Gringsing)
+        295: '0295' #Pati, Rembang
+        296: '0296' #Blora
+        297: '0297' #Karimun Jawa
+        298: '0298' #Salatiga, parts of Semarang Regency, parts of Boyolali
         #Yogyakarta
-        274: 0274 #All areas
-        321: 0321 #Mojokerto. Jombang
-        322: 0322 #Lamongan
-        323: 0323 #Sampang
-        324: 0324 #Pamekasan
-        325: 0325 #Bawean
-        326: 0326 #Masalembu Islands
-        327: 0327 #Kangean
-        328: 0328 #Sumenep
-        331: 0331 #Jember
-        332: 0332 #Bondowoso
-        333: 0333 #Banyuwangi
-        334: 0334 #Lumajang
-        335: 0335 #Probolinggo
-        338: 0338 #Situbondo
-        341: 0341 #Malang, Batu
-        342: 0342 #Blitar
-        343: 0343 #Pasuruan
-        351: 0351 #Madiun, Magetan, Ngawi
-        352: 0352 #Ponorogo
-        353: 0353 #Bojonegoro
-        354: 0354 #Kediri
-        355: 0355 #Tulungagung, Trenggalek
-        356: 0356 #Tuban
-        357: 0357 #Pacitan
-        358: 0358 #Nganjuk
+        274: '0274' #All areas
+        321: '0321' #Mojokerto. Jombang
+        322: '0322' #Lamongan
+        323: '0323' #Sampang
+        324: '0324' #Pamekasan
+        325: '0325' #Bawean
+        326: '0326' #Masalembu Islands
+        327: '0327' #Kangean
+        328: '0328' #Sumenep
+        331: '0331' #Jember
+        332: '0332' #Bondowoso
+        333: '0333' #Banyuwangi
+        334: '0334' #Lumajang
+        335: '0335' #Probolinggo
+        338: '0338' #Situbondo
+        341: '0341' #Malang, Batu
+        342: '0342' #Blitar
+        343: '0343' #Pasuruan
+        351: '0351' #Madiun, Magetan, Ngawi
+        352: '0352' #Ponorogo
+        353: '0353' #Bojonegoro
+        354: '0354' #Kediri
+        355: '0355' #Tulungagung, Trenggalek
+        356: '0356' #Tuban
+        357: '0357' #Pacitan
+        358: '0358' #Nganjuk
         #Bali
-        361: 0361 #Denpasar, Badung, Gianyar, parts of Tabanan
-        362: 0362 #Buleleng
-        363: 0363 #Karangasem
-        365: 0365 #Jembrana
-        366: 0366 #Klungkung, Bangli
-        368: 0368 #parts of Tabanan (Baturiti, Bedugul)
+        361: '0361' #Denpasar, Badung, Gianyar, parts of Tabanan
+        362: '0362' #Buleleng
+        363: '0363' #Karangasem
+        365: '0365' #Jembrana
+        366: '0366' #Klungkung, Bangli
+        368: '0368' #parts of Tabanan (Baturiti, Bedugul)
         #West Nusa Tenggara
-        370: 0370 #Mataram, West Lombok, Central Lombok
-        371: 0371 #Sumbawa
-        372: 0372 #West Sumbawa
-        373: 0373 #Dompu
-        374: 0374 #Bima
-        376: 0376 #East Lombok
+        370: '0370' #Mataram, West Lombok, Central Lombok
+        371: '0371' #Sumbawa
+        372: '0372' #West Sumbawa
+        373: '0373' #Dompu
+        374: '0374' #Bima
+        376: '0376' #East Lombok
         #East Nusa Tenggara
-        379: 0379 #Alor Islands
-        380: 0380 #Kupang
-        381: 0381 #Ende
-        382: 0382 #Sikka
-        383: 0383 #East Flores
-        384: 0384 #Ngada
-        385: 0385 #Manggarai
-        386: 0386 #West Manggarai
-        387: 0387 #Sumba
-        388: 0388 #North Central Timor, South Central Timor
-        389: 0389 #Belu
+        379: '0379' #Alor Islands
+        380: '0380' #Kupang
+        381: '0381' #Ende
+        382: '0382' #Sikka
+        383: '0383' #East Flores
+        384: '0384' #Ngada
+        385: '0385' #Manggarai
+        386: '0386' #West Manggarai
+        387: '0387' #Sumba
+        388: '0388' #North Central Timor, South Central Timor
+        389: '0389' #Belu
         #These are area codes for the provinces of West Sulawesi, South Sulawesi, Central Sulawesi, South East Sulawesi, North Sulawesi, and Gorontalo.
         #South East Sulawesi
-        401: 0401 #Kendari, parts of Konawe Regency
-        402: 0402 #Buton
-        403: 0403 #Muna
-        404: 0404 #Wakatobi
-        405: 0405 #Kolaka
-        408: 0408 #parts of Konawe Regency
+        401: '0401' #Kendari, parts of Konawe Regency
+        402: '0402' #Buton
+        403: '0403' #Muna
+        404: '0404' #Wakatobi
+        405: '0405' #Kolaka
+        408: '0408' #parts of Konawe Regency
         #South Sulawesi
-        410: 0410 #Pangkajene
-        411: 0411 #Makassar, Maros, Gowa
-        413: 0413 #Bantaeng, Bulukumba
-        414: 0414 #Selayar Islands
-        417: 0417 #Malino
-        418: 0418 #Takalar
-        419: 0419 #Jeneponto
-        420: 0420 #Enrekang
-        421: 0421 #Pare Pare, Pinrang, Sidenreng Rappang
-        423: 0423 #Tana Toraja
-        427: 0427 #Barru
-        471: 0471 #Luwu
-        473: 0473 #North Luwu
-        474: 0474 #East Luwu
-        481: 0481 #Bone
-        482: 0482 #Sinjai
-        484: 0484 #Soppeng
-        485: 0485 #Wajo
+        410: '0410' #Pangkajene
+        411: '0411' #Makassar, Maros, Gowa
+        413: '0413' #Bantaeng, Bulukumba
+        414: '0414' #Selayar Islands
+        417: '0417' #Malino
+        418: '0418' #Takalar
+        419: '0419' #Jeneponto
+        420: '0420' #Enrekang
+        421: '0421' #Pare Pare, Pinrang, Sidenreng Rappang
+        423: '0423' #Tana Toraja
+        427: '0427' #Barru
+        471: '0471' #Luwu
+        473: '0473' #North Luwu
+        474: '0474' #East Luwu
+        481: '0481' #Bone
+        482: '0482' #Sinjai
+        484: '0484' #Soppeng
+        485: '0485' #Wajo
         #West Sulawesi
-        422: 0422 #Majene
-        426: 0426 #Mamuju
-        428: 0428 #Polewali
+        422: '0422' #Majene
+        426: '0426' #Mamuju
+        428: '0428' #Polewali
         #Central Sulawesi
-        409: 0409 #Morowali
-        450: 0450 #Parigi Moutong
-        451: 0451 #Palu
-        452: 0452 #parts of Poso Regency
-        453: 0453 #Toli-Toli
-        457: 0457 #Donggala
-        458: 0458 #parts of Poso Regency (Tentena)
-        461: 0461 #Banggai
-        462: 0462 #Banggai Island
-        464: 0464 #Tojo Una-una
+        409: '0409' #Morowali
+        450: '0450' #Parigi Moutong
+        451: '0451' #Palu
+        452: '0452' #parts of Poso Regency
+        453: '0453' #Toli-Toli
+        457: '0457' #Donggala
+        458: '0458' #parts of Poso Regency (Tentena)
+        461: '0461' #Banggai
+        462: '0462' #Banggai Island
+        464: '0464' #Tojo Una-una
         #North Sulawesi
-        430: 0430 #South Minahasa
-        431: 0431 #Manado, Tomohon, Minahasa, North Minahasa
-        432: 0432 #Sangihe Islands
-        434: 0434 #Bolaang Mongondow
-        438: 0438 #Bitung
+        430: '0430' #South Minahasa
+        431: '0431' #Manado, Tomohon, Minahasa, North Minahasa
+        432: '0432' #Sangihe Islands
+        434: '0434' #Bolaang Mongondow
+        438: '0438' #Bitung
         #Gorontalo
-        435: 0435 #Gorontalo
-        443: 0443 #Pohuwato Regency
+        435: '0435' #Gorontalo
+        443: '0443' #Pohuwato Regency
         #These are area codes for the provinces of West Kalimantan, Central Kalimantan, South Kalimantan, and East Kalimantan.
         #West Kalimantan
-        534: 0534 #Ketapang
-        535: 0535 #Kayong Utara
-        561: 0561 #Pontianak
-        562: 0562 #Sambas, Bengkayang, Singkawang
-        563: 0563 #Landak
-        564: 0564 #Sanggau, Sekadau
-        565: 0565 #Sintang
-        567: 0567 #Kapuas Hulu
-        568: 0568 #Melawi
+        534: '0534' #Ketapang
+        535: '0535' #Kayong Utara
+        561: '0561' #Pontianak
+        562: '0562' #Sambas, Bengkayang, Singkawang
+        563: '0563' #Landak
+        564: '0564' #Sanggau, Sekadau
+        565: '0565' #Sintang
+        567: '0567' #Kapuas Hulu
+        568: '0568' #Melawi
         #Central Kalimantan
-        513: 0513 #Kapuas, Pulang Pisau
-        519: 0519 #North Barito
-        526: 0526 #South Barito, East Barito
-        528: 0528 #Murung Raya
-        531: 0531 #East Kotawaringin
-        532: 0532 #West Kotawaringin, Sukamara,
-        536: 0536 #Palangka Raya, Katingan
-        537: 0537 #Gunung Mas
-        539: 0539 #Seruyan, parts of East Kotawaringin
+        513: '0513' #Kapuas, Pulang Pisau
+        519: '0519' #North Barito
+        526: '0526' #South Barito, East Barito
+        528: '0528' #Murung Raya
+        531: '0531' #East Kotawaringin
+        532: '0532' #West Kotawaringin, Sukamara,
+        536: '0536' #Palangka Raya, Katingan
+        537: '0537' #Gunung Mas
+        539: '0539' #Seruyan, parts of East Kotawaringin
         #South Kalimantan
-        511: 0511 #Banjarmasin, Banjar, Banjarbaru, Barito Kuala
-        512: 0512 #Tanah Laut
-        517: 0517 #Hulu Sungai Selatan, Hulu Sungai Tengah, Tapin
-        518: 0518 #Kotabaru, Tanah Bumbu
-        526: 0526 #Tabalong, Balangan
-        527: 0527 #Hulu Sungai Utara
+        511: '0511' #Banjarmasin, Banjar, Banjarbaru, Barito Kuala
+        512: '0512' #Tanah Laut
+        517: '0517' #Hulu Sungai Selatan, Hulu Sungai Tengah, Tapin
+        518: '0518' #Kotabaru, Tanah Bumbu
+        526: '0526' #Tabalong, Balangan
+        527: '0527' #Hulu Sungai Utara
         #East Kalimantan
-        541: 0541 #Samarinda, Kutai Kartanegara
-        542: 0542 #Balikpapan, North Penajam Paser
-        543: 0543 #Paser
-        545: 0545 #West Kutai
-        548: 0548 #Bontang
-        549: 0549 #East Kutai
-        551: 0551 #Tarakan, Bunyu Island
-        552: 0552 #Bulungan
-        553: 0553 #Malinau
-        554: 0554 #Berau
-        556: 0556 #Nunukan
+        541: '0541' #Samarinda, Kutai Kartanegara
+        542: '0542' #Balikpapan, North Penajam Paser
+        543: '0543' #Paser
+        545: '0545' #West Kutai
+        548: '0548' #Bontang
+        549: '0549' #East Kutai
+        551: '0551' #Tarakan, Bunyu Island
+        552: '0552' #Bulungan
+        553: '0553' #Malinau
+        554: '0554' #Berau
+        556: '0556' #Nunukan
         #These are area codes for the Provinces of Aceh and North Sumatra.
         #Aceh
-        627: 0627 #Subulussalam
-        629: 0629 #Southeast Aceh
-        641: 0641 #Langsa, East Aceh, Aceh Tamiang
-        642: 0642 #Gayo Lues
-        643: 0643 #Central Aceh
-        644: 0644 #Bireuen
-        645: 0645 #Lhokseumawe, North Aceh
-        646: 0646 #parts of East Aceh
-        650: 0650 #Simeulue
-        651: 0651 #Banda Aceh, Aceh Besar, parts of Aceh Jaya (Lamno)
-        652: 0652 #Sabang
-        653: 0653 #Pidie
-        654: 0654 #Aceh Jaya
-        655: 0655 #West Aceh
-        656: 0656 #South Aceh
-        657: 0657 #parts of South Aceh
-        658: 0658 #Singkil
-        659: 0659 #Southwest Aceh
+        627: '0627' #Subulussalam
+        629: '0629' #Southeast Aceh
+        641: '0641' #Langsa, East Aceh, Aceh Tamiang
+        642: '0642' #Gayo Lues
+        643: '0643' #Central Aceh
+        644: '0644' #Bireuen
+        645: '0645' #Lhokseumawe, North Aceh
+        646: '0646' #parts of East Aceh
+        650: '0650' #Simeulue
+        651: '0651' #Banda Aceh, Aceh Besar, parts of Aceh Jaya (Lamno)
+        652: '0652' #Sabang
+        653: '0653' #Pidie
+        654: '0654' #Aceh Jaya
+        655: '0655' #West Aceh
+        656: '0656' #South Aceh
+        657: '0657' #parts of South Aceh
+        658: '0658' #Singkil
+        659: '0659' #Southwest Aceh
         #North Sumatra
-        620: 0620 #parts of Langkat (Pangkalan Brandan)
-        621: 0621 #Tebingtinggi, Serdang Bedagai
-        622: 0622 #Pematang Siantar, Simalungun, Batubara, parts of Serdang Bedagai
-        623: 0623 #Asahan, Tanjung Balai, parts of Labuhan Batu (Labuhan Ruku)
-        624: 0624 #Labuhan Batu
-        625: 0625 #Parapat, parts of Samosir
-        626: 0626 #Samosir
-        627: 0627 #Dairi, Pakpak Bharat
-        628: 0628 #Karo, parts of Deli Serdang (Bandar Baru, Sibolangit)
-        630: 0630 #South Nias
-        631: 0631 #Central Tapanuli, Sibolga
-        632: 0632 #Toba Samosir
-        633: 0633 #North Tapanuli, Humbang Hasundutan
-        634: 0634 #South Tapanuli, Padang Sidempuan
-        635: 0635 #parts of South Tapanuli
-        636: 0636 #Mandailing Natal
-        639: 0639 #Nias
+        620: '0620' #parts of Langkat (Pangkalan Brandan)
+        621: '0621' #Tebingtinggi, Serdang Bedagai
+        622: '0622' #Pematang Siantar, Simalungun, Batubara, parts of Serdang Bedagai
+        623: '0623' #Asahan, Tanjung Balai, parts of Labuhan Batu (Labuhan Ruku)
+        624: '0624' #Labuhan Batu
+        625: '0625' #Parapat, parts of Samosir
+        626: '0626' #Samosir
+        627: '0627' #Dairi, Pakpak Bharat
+        628: '0628' #Karo, parts of Deli Serdang (Bandar Baru, Sibolangit)
+        630: '0630' #South Nias
+        631: '0631' #Central Tapanuli, Sibolga
+        632: '0632' #Toba Samosir
+        633: '0633' #North Tapanuli, Humbang Hasundutan
+        634: '0634' #South Tapanuli, Padang Sidempuan
+        635: '0635' #parts of South Tapanuli
+        636: '0636' #Mandailing Natal
+        639: '0639' #Nias
         #These are area codes for the Provinces of West Sumatra, Riau, Riau Islands, Jambi, South Sumatra, Bengkulu, Bangka-Belitung, and Lampung.
         #West Sumatra
-        751: 0751 #Padang, Padang Pariaman, Pariaman, parts of South Pesisir
-        752: 0752 #Agam, Tanah Datar, Limapuluh Koto, Bukittinggi, Padang Panjang, Payakumbuh
-        753: 0753 #Pasaman, West Pasaman
-        754: 0754 #Sawahlunto, Sijunjung, Dharmasraya
-        755: 0755 #Solok, South Solok
-        756: 0756 #South Pesisir
-        757: 0757 #parts of South Pesisir
-        759: 0759 #Mentawai Islands
+        751: '0751' #Padang, Padang Pariaman, Pariaman, parts of South Pesisir
+        752: '0752' #Agam, Tanah Datar, Limapuluh Koto, Bukittinggi, Padang Panjang, Payakumbuh
+        753: '0753' #Pasaman, West Pasaman
+        754: '0754' #Sawahlunto, Sijunjung, Dharmasraya
+        755: '0755' #Solok, South Solok
+        756: '0756' #South Pesisir
+        757: '0757' #parts of South Pesisir
+        759: '0759' #Mentawai Islands
         #Riau
-        760: 0760 #Kuantan Singingi
-        761: 0761 #Pekanbaru, Pelalawan, parts of Siak, parts of Kampar
-        762: 0762 #Kampar, Rokan Hulu
-        763: 0763 #parts of Bengkalis
-        764: 0764 #Siak
-        765: 0765 #Dumai, parts of Bengkalis (Duri), parts of Rokan Hulu (Bagan Batu)
-        766: 0766 #Bengkalis
-        767: 0767 #Rokan Hulu
-        768: 0768 #Indragiri Hilir
-        769: 0769 #Indragiri Hulu
+        760: '0760' #Kuantan Singingi
+        761: '0761' #Pekanbaru, Pelalawan, parts of Siak, parts of Kampar
+        762: '0762' #Kampar, Rokan Hulu
+        763: '0763' #parts of Bengkalis
+        764: '0764' #Siak
+        765: '0765' #Dumai, parts of Bengkalis (Duri), parts of Rokan Hulu (Bagan Batu)
+        766: '0766' #Bengkalis
+        767: '0767' #Rokan Hulu
+        768: '0768' #Indragiri Hilir
+        769: '0769' #Indragiri Hulu
         #Riau Islands
-        771: 0771 #Tanjungpinang, Bintan
-        772: 0772 #Anambas Islands
-        773: 0773 #Natuna Islands
-        776: 0776 #Lingga
-        777: 0777 #Great Karimun
-        778: 0778 #Batam
-        779: 0779 #Kundur
+        771: '0771' #Tanjungpinang, Bintan
+        772: '0772' #Anambas Islands
+        773: '0773' #Natuna Islands
+        776: '0776' #Lingga
+        777: '0777' #Great Karimun
+        778: '0778' #Batam
+        779: '0779' #Kundur
         #Jambi
-        741: 0741 #Jambi, Muaro Jambi
-        742: 0742 #West Tanjung Jabung
-        743: 0743 #Batanghari
-        744: 0744 #Tebo
-        745: 0745 #Sarolangun
-        746: 0746 #Merangin
-        747: 0747 #Bungo, parts of Tebo (Rimbo Bujang)
-        748: 0748 #Kerinci
+        741: '0741' #Jambi, Muaro Jambi
+        742: '0742' #West Tanjung Jabung
+        743: '0743' #Batanghari
+        744: '0744' #Tebo
+        745: '0745' #Sarolangun
+        746: '0746' #Merangin
+        747: '0747' #Bungo, parts of Tebo (Rimbo Bujang)
+        748: '0748' #Kerinci
         #South Sumatra
-        702: 0702 #Empat Lawang
-        711: 0711 #Palembang, Ogan Ilir, Banyuasin
-        712: 0712 #Ogan Komering Ilir
-        713: 0713 #Prabumulih, parts of Muara Enim
-        714: 0714 #Musi Banyuasin
-        730: 0730 #Pagar Alam, parts of Lahat
-        731: 0731 #Lahat
-        733: 0733 #Lubuk Linggau, Musi Rawas
-        734: 0734 #Muara Enim
-        735: 0735 #Ogan Komering Ulu
+        702: '0702' #Empat Lawang
+        711: '0711' #Palembang, Ogan Ilir, Banyuasin
+        712: '0712' #Ogan Komering Ilir
+        713: '0713' #Prabumulih, parts of Muara Enim
+        714: '0714' #Musi Banyuasin
+        730: '0730' #Pagar Alam, parts of Lahat
+        731: '0731' #Lahat
+        733: '0733' #Lubuk Linggau, Musi Rawas
+        734: '0734' #Muara Enim
+        735: '0735' #Ogan Komering Ulu
         #Bangka-Belitung
-        715: 0715 #parts of Bangka (Belinyu)
-        716: 0716 #West Bangka
-        717: 0717 #Bangka, Pangkal Pinang
-        718: 0718 #Central Bangka, South Bangka
-        719: 0719 #Belitung
+        715: '0715' #parts of Bangka (Belinyu)
+        716: '0716' #West Bangka
+        717: '0717' #Bangka, Pangkal Pinang
+        718: '0718' #Central Bangka, South Bangka
+        719: '0719' #Belitung
         #Bengkulu
-        732: 0732 #Rejang Lebong, Kepahiang
-        736: 0736 #Bengkulu, Seluma
-        737: 0737 #North Bengkulu, Muko-muko
-        739: 0739 #South Bengkulu, Kaur
+        732: '0732' #Rejang Lebong, Kepahiang
+        736: '0736' #Bengkulu, Seluma
+        737: '0737' #North Bengkulu, Muko-muko
+        739: '0739' #South Bengkulu, Kaur
         #Lampung
-        721: 0721 #Bandar Lampung, parts of South Lampung
-        722: 0722 #Tanggamus
-        723: 0723 #Way Kanan
-        724: 0724 #North Lampung
-        725: 0725 #Metro, Central Lampung, East Lampung
-        726: 0726 #Tulang Bawang
-        727: 0727 #South Lampung
-        728: 0728 #West Lampung
-        729: 0729 #part of Tanggamus
+        721: '0721' #Bandar Lampung, parts of South Lampung
+        722: '0722' #Tanggamus
+        723: '0723' #Way Kanan
+        724: '0724' #North Lampung
+        725: '0725' #Metro, Central Lampung, East Lampung
+        726: '0726' #Tulang Bawang
+        727: '0727' #South Lampung
+        728: '0728' #West Lampung
+        729: '0729' #part of Tanggamus
         #These are area codes for the provinces of Maluku, North Maluku, West Papua, and Papua.
         #Maluku
-        910: 0910 #Banda Naira
-        911: 0911 #Ambon
-        913: 0913 #Namlea
-        914: 0914 #Masohi
-        916: 0916 #Tual
-        917: 0917 #Dobo
-        918: 0918 #Saumlaki
+        910: '0910' #Banda Naira
+        911: '0911' #Ambon
+        913: '0913' #Namlea
+        914: '0914' #Masohi
+        916: '0916' #Tual
+        917: '0917' #Dobo
+        918: '0918' #Saumlaki
         #North Maluku
-        920: 0920 #Weda
-        921: 0921 #Ternate
-        924: 0924 #Tobelo
-        929: 0929 #Tidore
+        920: '0920' #Weda
+        921: '0921' #Ternate
+        924: '0924' #Tobelo
+        929: '0929' #Tidore
         #West Papua
-        951: 0951 #Sorong
-        956: 0956 #Kaimana, Fak Fak
-        986: 0986 #Manokwari
+        951: '0951' #Sorong
+        956: '0956' #Kaimana, Fak Fak
+        986: '0986' #Manokwari
         #Papua
-        901: 0901 #Timika
-        902: 0902 #Agats
-        963: 0963 #Serui
-        966: 0966 #Sarmi
-        967: 0967 #Jayapura
-        969: 0969 #Wamena
-        971: 0971 #Merauke
-        975: 0975 #Tanah Merah (Boven Digoel)
-        979: 0979 #Tembagapura
-        981: 0981 #Biak
-        983: 0983 #Botawa / Serui
-        984: 0984 #Nabire
+        901: '0901' #Timika
+        902: '0902' #Agats
+        963: '0963' #Serui
+        966: '0966' #Sarmi
+        967: '0967' #Jayapura
+        969: '0969' #Wamena
+        971: '0971' #Merauke
+        975: '0975' #Tanah Merah (Boven Digoel)
+        979: '0979' #Tembagapura
+        981: '0981' #Biak
+        983: '0983' #Botawa / Serui
+        984: '0984' #Nabire
 
     guru_phone_number_formatter.format.id.prefix.mobile:
-        0814: [11, 12]
-        0815: [11]
-        0816: [10]
-        0816: [11]
-        0855: [11]
+        '0814': [11, 12]
+        '0815': [11]
+        '0816': [10]
+        '0816': [11]
+        '0855': [11]
         #Mentari prefix:
-        0816: [10, 11, 12]
-        0815: [11, 12]
-        0858: [12]
+        '0816': [10, 11, 12]
+        '0815': [11, 12]
+        '0858': [12]
         #IM3 prefix:
-        0856: [11, 12]
-        0857: [12]
+        '0856': [11, 12]
+        '0857': [12]
 
         #PT Telkomsel
         #kartuHALO prefix:
-        0811: [10, 11]
-        0812: [11]
+        '0811': [10, 11]
+        '0812': [11]
         #simPATI prefix:
-        0812: [11, 12]
-        0813: [12]
-        0821: [12]
-        0822: [12]
+        '0812': [11, 12]
+        '0813': [12]
+        '0821': [12]
+        '0822': [12]
         #kartu As prefix:
-        0852: [12]
-        0853: [12]
-        0823: [12]
+        '0852': [12]
+        '0853': [12]
+        '0823': [12]
 
         #PT XL Axiata
         #XL Postpaid prefix:
-        0817: [10, 11]
-        0818: [10]
-        0819: [11]
+        '0817': [10, 11]
+        '0818': [10]
+        '0819': [11]
         #XL Prepaid prefix:
-        0818: [10, 11, 12]
-        0819: [10, 11, 12]
-        0859: [12]
-        0877: [12]
-        0878: [12]
-        0879: [12]
-        0817: [10, 11]
+        '0818': [10, 11, 12]
+        '0819': [10, 11, 12]
+        '0859': [12]
+        '0877': [12]
+        '0878': [12]
+        '0879': [12]
+        '0817': [10, 11]
 
         #PT Hutchison CP Telecommunications
         #3 prefix:
-        0899: [11]
-        0898: [11]
-        0897: [11]
-        0896: [12]
+        '0899': [11]
+        '0898': [11]
+        '0897': [11]
+        '0896': [12]
         #PT AXIS Telekom Indonesia, formerly PT Natrindo Telepon Seluler
         #Axis prefix:
-        0838: [11, 12]
-        0832: [11]
-        0831: [11]
+        '0838': [11, 12]
+        '0832': [11]
+        '0831': [11]
