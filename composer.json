@@ -1,7 +1,7 @@
 {
-    "name": "propertyguru/sf2-listing-internal",
+    "name": "propertyguru/E194-phone-number-formatter-bundle",
     "type": "project",
-    "description": "Propertygurus's listing search API",
+    "description": "Propertygurus's phone number formatter",
     "autoload": {
         "psr-0": { "": "src/" }
     },
