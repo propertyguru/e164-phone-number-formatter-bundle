@@ -1,0 +1,26 @@
+services:
+    guru_phone_number_formatter.formatter:
+        class: Guru\PhoneNumberFormatterBundle\Formatter\Formatter
+        arguments: [@service_container]
+        public: false
+        calls:
+            - [addRegionFormatter, ['my', @guru_phone_number_formatter.formatter_my]]
+            - [addRegionFormatter, ['id', @guru_phone_number_formatter.formatter_id]]
+    guru_phone_number_formatter.formatter_my:
+        class: Guru\PhoneNumberFormatterBundle\Formatter\FormatterMy
+        arguments: [@service_container]
+        public: false
+        calls:
+            - [setLandlinePrefixCodesShort, [%guru_phone_number_formatter.format.my.prefix.landline.short%]]
+            - [setLandlinePrefixCodesLong, [%guru_phone_number_formatter.format.my.prefix.landline.long%]]
+            - [setMobilePrefixCodesShort, [%guru_phone_number_formatter.format.my.prefix.mobile.short%]]
+            - [setMobilePrefixCodesLong, [%guru_phone_number_formatter.format.my.prefix.mobile.long%]]
+    guru_phone_number_formatter.formatter_id:
+        class: Guru\PhoneNumberFormatterBundle\Formatter\FormatterId
+        arguments: [@service_container]
+        public: false
+        calls:
+            - [setLandlineLengths, [%guru_phone_number_formatter.format.id.prefix.landline.lengths%]]
+            - [setLandlinePrefixCodesShort, [%guru_phone_number_formatter.format.id.prefix.landline.short%]]
+            - [setLandlinePrefixCodesLong, [%guru_phone_number_formatter.format.id.prefix.landline.long%]]
+            - [setMobileCodes, [%guru_phone_number_formatter.format.id.prefix.mobile%]]

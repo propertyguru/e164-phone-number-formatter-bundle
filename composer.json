@@ -3,7 +3,9 @@
     "type": "project",
     "description": "Propertygurus's phone number formatter",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": {
+            "Guru\\": "src/"
+        }
     },
     "repositories": [
     ],
