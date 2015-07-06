@@ -105,17 +105,5 @@ class FormatterMy extends FormatterAbstract implements FormatterInterface
                 return $phoneNumber;
             }
         }
-
-    }
-
-    public function formatNumberByDigits($number = '')
-    {
-        $nrLen = strlen($number);
-        if ($nrLen >= 7 && $nrLen <= 9){
-            return substr($number, 0, $nrLen - 7).' '.substr($number, $nrLen - 7, 3).' '.substr($number, $nrLen - 4, 4);
-        } elseif ($nrLen >= 10){
-            return substr($number, 0, $nrLen - 8).' '.substr($number, $nrLen - 8, 4).' '.substr($number, $nrLen - 4, 4);
-        }
-        return $number;
     }
 }

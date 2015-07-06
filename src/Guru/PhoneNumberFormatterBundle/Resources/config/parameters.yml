@@ -1,9 +1,245 @@
 parameters:
     guru_phone_number_formatter.country_codes:
-        my: 60
-        th: 66
-        sg: 65
-        id: 62
+        af: '93' #afghanistan
+        al: '355' #albania
+        dz: '213' #algeria
+        #as: '1-684' #american samoa
+        ad: '376' #andorra
+        ao: '244' #angola
+        #ai: '1-264' #anguilla
+        aq: '672' #antarctica
+        #ag: '1-268' #antigua and barbuda
+        ar: '54' #argentina
+        am: '374' #armenia
+        aw: '297' #aruba
+        au: '61' #australia
+        at: '43' #austria
+        az: '994' #azerbaijan
+        #bs: '1-242' #bahamas
+        bh: '973' #bahrain
+        bd: '880' #bangladesh
+        #bb: '1-246' #barbados
+        by: '375' #belarus
+        be: '32' #belgium
+        bz: '501' #belize
+        bj: '229' #benin
+        #bm: '1-441' #bermuda
+        bt: '975' #bhutan
+        bo: '591' #bolivia
+        ba: '387' #bosnia and herzegovina
+        bw: '267' #botswana
+        br: '55' #brazil
+        io: '246' #british indian ocean territory
+        #vg: '1-284' #british virgin islands
+        bn: '673' #brunei
+        bg: '359' #bulgaria
+        bf: '226' #burkina faso
+        bi: '257' #burundi
+        kh: '855' #cambodia
+        cm: '237' #cameroon
+        ca: '1' #canada
+        cv: '238' #cape verde
+        #ky: '1-345' #cayman islands
+        cf: '236' #central african republic
+        td: '235' #chad
+        cl: '56' #chile
+        cn: '86' #china
+        cx: '61' #christmas island
+        cc: '61' #cocos islands
+        co: '57' #colombia
+        km: '269' #comoros
+        ck: '682' #cook islands
+        cr: '506' #costa rica
+        hr: '385' #croatia
+        cu: '53' #cuba
+        cw: '599' #curacao
+        cy: '357' #cyprus
+        cz: '420' #czech republic
+        cd: '243' #democratic republic of the congo
+        dk: '45' #denmark
+        dj: '253' #djibouti
+        #dm: '1-767' #dominica
+        #do: '1-849' #dominican republic  1-809, 1-829,
+        tl: '670' #east timor
+        ec: '593' #ecuador
+        eg: '20' #egypt
+        sv: '503' #el salvador
+        gq: '240' #equatorial guinea
+        er: '291' #eritrea
+        ee: '372' #estonia
+        et: '251' #ethiopia
+        fk: '500' #falkland islands
+        fo: '298' #faroe islands
+        fj: '679' #fiji
+        fi: '358' #finland
+        fr: '33' #france
+        pf: '689' #french polynesia
+        ga: '241' #gabon
+        gm: '220' #gambia
+        ge: '995' #georgia
+        de: '49' #germany
+        gh: '233' #ghana
+        gi: '350' #gibraltar
+        gr: '30' #greece
+        gl: '299' #greenland
+        #gd: '1-473' #grenada
+        #gu: '1-671' #guam
+        gt: '502' #guatemala
+        #gg: '44-1481' #guernsey
+        gn: '224' #guinea
+        gw: '245' #guinea-bissau
+        gy: '592' #guyana
+        ht: '509' #haiti
+        hn: '504' #honduras
+        hk: '852' #hong kong
+        hu: '36' #hungary
+        is: '354' #iceland
+        in: '91' #india
+        id: '62' #indonesia
+        ir: '98' #iran
+        iq: '964' #iraq
+        ie: '353' #ireland
+        #im: '44-1624' #isle of man
+        il: '972' #israel
+        it: '39' #italy
+        ci: '225' #ivory coast
+        #jm: '1-876' #jamaica
+        jp: '81' #japan
+        #je: '44-1534' #jersey
+        jo: '962' #jordan
+        kz: '7' #kazakhstan
+        ke: '254' #kenya
+        ki: '686' #kiribati
+        xk: '383' #kosovo
+        kw: '965' #kuwait
+        kg: '996' #kyrgyzstan
+        la: '856' #laos
+        lv: '371' #latvia
+        lb: '961' #lebanon
+        ls: '266' #lesotho
+        lr: '231' #liberia
+        ly: '218' #libya
+        li: '423' #liechtenstein
+        lt: '370' #lithuania
+        lu: '352' #luxembourg
+        mo: '853' #macao
+        mk: '389' #macedonia
+        mg: '261' #madagascar
+        mw: '265' #malawi
+        my: '60' #malaysia
+        mv: '960' #maldives
+        ml: '223' #mali
+        mt: '356' #malta
+        mh: '692' #marshall islands
+        mr: '222' #mauritania
+        mu: '230' #mauritius
+        yt: '262' #mayotte
+        mx: '52' #mexico
+        fm: '691' #micronesia
+        md: '373' #moldova
+        mc: '377' #monaco
+        mn: '976' #mongolia
+        me: '382' #montenegro
+        #ms: '1-664' #montserrat
+        ma: '212' #morocco
+        mz: '258' #mozambique
+        mm: '95' #myanmar
+        na: '264' #namibia
+        nr: '674' #nauru
+        np: '977' #nepal
+        nl: '31' #netherlands
+        an: '599' #netherlands antilles
+        nc: '687' #new caledonia
+        nz: '64' #new zealand
+        ni: '505' #nicaragua
+        ne: '227' #niger
+        ng: '234' #nigeria
+        nu: '683' #niue
+        kp: '850' #north korea
+        #mp: '1-670' #northern mariana islands
+        no: '47' #norway
+        om: '968' #oman
+        pk: '92' #pakistan
+        pw: '680' #palau
+        ps: '970' #palestine
+        pa: '507' #panama
+        pg: '675' #papua new guinea
+        py: '595' #paraguay
+        pe: '51' #peru
+        ph: '63' #philippines
+        pn: '64' #pitcairn
+        pl: '48' #poland
+        pt: '351' #portugal
+        #pr: '1-939' #puerto rico 1-787,
+        qa: '974' #qatar
+        cg: '242' #republic of the congo
+        re: '262' #reunion
+        ro: '40' #romania
+        ru: '7' #russia
+        rw: '250' #rwanda
+        bl: '590' #saint barthelemy
+        sh: '290' #saint helena
+        #kn: '1-869' #saint kitts and nevis
+        #lc: '1-758' #saint lucia
+        mf: '590' #saint martin
+        pm: '508' #saint pierre and miquelon
+        #vc: '1-784' #saint vincent and the grenadines
+        ws: '685' #samoa
+        sm: '378' #san marino
+        st: '239' #sao tome and principe
+        sa: '966' #saudi arabia
+        sn: '221' #senegal
+        rs: '381' #serbia
+        sc: '248' #seychelles
+        sl: '232' #sierra leone
+        sg: '65' #singapore
+        #sx: '1-721' #sint maarten
+        sk: '421' #slovakia
+        si: '386' #slovenia
+        sb: '677' #solomon islands
+        so: '252' #somalia
+        za: '27' #south africa
+        kr: '82' #south korea
+        ss: '211' #south sudan
+        es: '34' #spain
+        lk: '94' #sri lanka
+        sd: '249' #sudan
+        sr: '597' #suriname
+        sj: '47' #svalbard and jan mayen
+        sz: '268' #swaziland
+        se: '46' #sweden
+        ch: '41' #switzerland
+        sy: '963' #syria
+        tw: '886' #taiwan
+        tj: '992' #tajikistan
+        tz: '255' #tanzania
+        th: '66' #thailand
+        tg: '228' #togo
+        tk: '690' #tokelau
+        to: '676' #tonga
+        #tt: '1-868' #trinidad and tobago
+        tn: '216' #tunisia
+        tr: '90' #turkey
+        tm: '993' #turkmenistan
+        #tc: '1-649' #turks and caicos islands
+        tv: '688' #tuvalu
+        #vi: '1-340' #u.s. virgin islands
+        ug: '256' #uganda
+        ua: '380' #ukraine
+        ae: '971' #united arab emirates
+        gb: '44' #united kingdom
+        us: '1' #united states
+        uy: '598' #uruguay
+        uz: '998' #uzbekistan
+        vu: '678' #vanuatu
+        va: '379' #vatican
+        ve: '58' #venezuela
+        vn: '84' #vietnam
+        wf: '681' #wallis and futuna
+        eh: '212' #western sahara
+        ye: '967' #yemen
+        zm: '260' #zambia
+        zw: '263' #zimbabwe
 
     guru_phone_number_formatter.format.my.prefix.landline.short:
         2: '02' #Domestic access code to Singapore
@@ -431,3 +667,52 @@ parameters:
         '0838': [11, 12]
         '0832': [11]
         '0831': [11]
+
+    guru_phone_number_formatter.format.th.landline.length: 9
+    guru_phone_number_formatter.format.th.prefix.landline:
+        2: '02' # Bangkok (Krung Thep Maha Nakhon), Nonthaburi, Pathum Thani, Samut Prakan, Phutthamonthon (Nakhon Pathom)
+        32: '032' # Phetchaburi, Prachuap Khiri Khan, Ratchaburi
+        34: '034' # Kanchanaburi, Nakhon Pathom (except Phutthamonthon), Samut Sakhon, Samut Songkhram
+        35: '035' # Ang Thong, Phra Nakhon Si Ayutthaya, Suphan Buri
+        36: '036' # Lop Buri, Saraburi, Sing Buri
+        37: '037' # Nakhon Nayok, Prachin Buri, Sa Kaeo
+        38: '038' # Chachoengsao, Chon Buri, Rayong
+        39: '039' # Chanthaburi, Trat
+        42: '042' # Bueng Kan, Loei, Mukdahan, Nakhon Phanom, Nong Bua Lamphu, Nong Khai, Sakon Nakhon, Udon Thani
+        43: '043' # Kalasin, Khon Kaen, Maha Sarakham, Roi Et, Nam Nao (Phetchabun)
+        44: '044' # Buri Ram, Chaiyaphum, Nakhon Ratchasima, Surin
+        45: '045' # Amnat Charoen, Si Sa Ket, Ubon Ratchathani, Yasothon
+        52: '052' # Chiang Mai, Chiang Rai, Lamphun, Mae Hong Son
+        53: '053' # Chiang Mai, Chiang Rai, Lamphun, Mae Hong Son
+        54: '054' # Lampang, Nan, Phayao, Phrae
+        55: '055' # Kamphaeng Phet, Phitsanulok, Sukhothai, Tak, Uttaradit, Sam Ngam, Wachirabarami (Phichit)
+        56: '056' # Chai Nat, Nakhon Sawan, Phetchabun (except Nam Nao), Phichit (except Sam Ngam & Wachirabarami), Uthai Thani
+        73: '073' # Narathiwat, Pattani, Yala
+        74: '074' # Phatthalung, Satun, Songkhla
+        75: '075' # Krabi, Nakhon Si Thammarat, Trang
+        76: '076' # Phang Nga, Phuket
+        77: '077' # Chumphon, Ranong, Surat Thani
+
+    guru_phone_number_formatter.format.th.mobile.length: 10
+    guru_phone_number_formatter.format.th.prefix.mobile:
+        60: '060' #True Move (VoIP)
+        68: '068' #TOT (VoIP)
+        80: '080' #AIS + True Move + DTAC
+        81: '081' #AIS + DTAC
+        82: '082' #AIS
+        83: '083' #True Move
+        84: '084' #AIS
+        85: '085' #DTAC + AIS
+        86: '086' #True Move
+        87: '087' #AIS
+        88: '088' #True Move
+        89: '089' #DTAC
+        90: '090' #DTAC + AIS + True Move H
+        91: '091' #DTAC
+
+    guru_phone_number_formatter.format.sg.length: 8
+    guru_phone_number_formatter.format.sg.prefix.voip: 3
+    guru_phone_number_formatter.format.sg.prefix.landline: 6
+    guru_phone_number_formatter.format.sg.mobile.rules:
+        8: 8[1-9]
+        9: 9[0-8]

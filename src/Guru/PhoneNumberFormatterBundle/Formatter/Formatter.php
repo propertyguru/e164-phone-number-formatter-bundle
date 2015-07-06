@@ -27,7 +27,7 @@ class Formatter
         $this->regionCode = $regionCode;
     }
 
-    public function numberToE194($number = '', $countryCode = null)
+    public function numberToE164($number = '', $countryCode = null)
     {
         if ($number == '') {
             $phoneNumber = new PhoneNumber();
@@ -77,18 +77,23 @@ class Formatter
         //cleanup the non-numeric chars 
         $number = preg_replace('/[^0-9\+]/', '', $number);
 
-        if (strpos($number, '+') === 0) {
+        if (strpos($number, '+') === 0 || strpos($number, '00') === 0) {
+            if (strpos($number, '+') === 0){
+                $checkNumber = preg_replace('/^\+/', '', $number);
+            } else {
+                $checkNumber = preg_replace('/^00/', '', $number);
+            }
             //check only for the defined country codes
             foreach ($this->countryCodes as $regionCode => $code){
-                if (strpos($number, '+'.$code) === 0){
-                    $number = preg_replace('/^'.preg_quote('+'.$code, '/').'/', '', $number);
+                if (strpos($checkNumber, $code) === 0){
+                    $number = preg_replace('/^'.preg_quote($code, '/').'/', '', $checkNumber);
                     return array((string)$code, $number);
                 }
             }
 
             //if we didn't find the country code
-            //remove the plus
-            $number = preg_replace('/^\+/', '', $number);
+            //remove the + / 00
+            $number = $checkNumber;
         }
 
         // return specified country code
@@ -114,17 +119,37 @@ class Formatter
         return isset($this->countryCodesFlipped[$countryCode]) ? $this->countryCodesFlipped[$countryCode] : null;
     }
 
-    public function formatByDigitCount(PhoneNumber $E194)
+    public function formatByDigitCount(PhoneNumber $E164)
     {
-        if ($E194->getSubscriberNumber() === '' || $E194->getSubscriberNumber() === null){
-            return $E194->getSubscriberNumber();
+        if ($E164->getSubscriberNumber() === '' || $E164->getSubscriberNumber() === null){
+            return $E164->getSubscriberNumber();
         }
 
-        return ($E194->getCountryCode() !== '' && $E194->getCountryCode() !== null ? '+'.$E194->getCountryCode() : '')
-            . $this->formatNumberByDigits(
-                $E194->getNationalDestinationCodeInternational().$E194->getSubscriberNumber(),
-                $E194->getCountryCode()
-            );
+        $numberString = '';
+        //add country code
+        if ($E164->getCountryCode() !== '' && $E164->getCountryCode() !== null) {
+            $numberString .= '+'.$E164->getCountryCode();
+        }
+
+        //add region / mobile code
+        if ($E164->getNationalDestinationCode() != '') {
+            //see if we need local / international code
+            $code = '';
+            if ($E164->getCountryCode() !== '' && $E164->getCountryCode() !== null) {
+                $code = $E164->getNationalDestinationCodeInternational();
+            } else {
+                $code = $E164->getNationalDestinationCode();
+            }
+
+            $numberString .= ($numberString != '' ? ' ' :'').$code;
+        }
+
+        $numberString .= ($numberString != '' ? ' ' :'').$this->formatNumberByDigits(
+            $E164->getSubscriberNumber(),
+            $E164->getCountryCode()
+        );
+
+        return $numberString;
     }
 
     private function formatNumberByDigits($number, $countryCode)
@@ -132,7 +157,8 @@ class Formatter
         $regionCode = $this->getRegionCodeFromCountryCode($countryCode);
         $regionFormatter = $this->getRegionFormatter($regionCode);
         if (!$regionFormatter) {
-            return $number;
+            //use the generic formatter
+            return FormatterAbstract::formatNumberByDigits($number);
         }
         return $regionFormatter->formatNumberByDigits($number);
     }
