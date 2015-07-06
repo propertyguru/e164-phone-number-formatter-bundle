@@ -3,6 +3,8 @@ Bundle to format phone numbers in E194 format
 
 ## Detection Examples
     $formatter = $this->container->get('guru_phone_number_formatter.formatter');
+    // optional: set current country - if known
+    $formatter->setDefaultRegionCode('my');
 
 ### If you know the country code already
     $e194 = $formatter->numberToE194('0101234567', '60');
@@ -38,5 +40,4 @@ Bundle to format phone numbers in E194 format
            'isMobile' => false,
         )
     */
-
 

@@ -97,17 +97,17 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider provideNumberToE194
+     * @dataProvider provideNumberToE164
     **/
-    public function testNumberToE194($expected, $countryCode, $number)
+    public function testNumberToE164($expected, $countryCode, $number)
     {
         $this->initRegionFormatters($this->formatter);
 
-        $actual = $this->formatter->numberToE194($number, $countryCode);
+        $actual = $this->formatter->numberToE164($number, $countryCode);
         $this->assertEquals($expected, $actual->toArray());
     }
 
-    public function provideNumberToE194()
+    public function provideNumberToE164()
     {
         return array(
             //my
@@ -582,15 +582,15 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider provideFormatByDigitCount
     **/
-    public function testFormatByDigitCount($expected, $E194)
+    public function testFormatByDigitCount($expected, $E164)
     {
         $this->initRegionFormatters($this->formatter);
 
         $phoneNumber = new PhoneNumber();
-        $phoneNumber->setCountryCode($E194['countryCode']);
-        $phoneNumber->setSubscriberNumber($E194['subscriberNumber']);
-        $phoneNumber->setNationalDestinationCode($E194['nationalDestinationCode']);
-        $phoneNumber->setNationalDestinationCodeInternational($E194['nationalDestinationCodeInternational']);
+        $phoneNumber->setCountryCode($E164['countryCode']);
+        $phoneNumber->setSubscriberNumber($E164['subscriberNumber']);
+        $phoneNumber->setNationalDestinationCode($E164['nationalDestinationCode']);
+        $phoneNumber->setNationalDestinationCodeInternational($E164['nationalDestinationCodeInternational']);
 
         $actual = $this->formatter->formatByDigitCount($phoneNumber);
         $this->assertEquals($expected, $actual);
