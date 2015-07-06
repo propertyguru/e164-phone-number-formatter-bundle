@@ -6,9 +6,6 @@ use Guru\PhoneNumberFormatterBundle\Model\PhoneNumber;
 
 abstract class FormatterAbstract
 {
-    abstract public function extractNationalDestinationCode($number = '', $countryCode = null);
-    abstract public function formatNumberByDigits($number = '');
-
     protected function matchNumberPrefix($prefixList = array(), $number = '', $inputShortPrefixes = false)
     {
         $matchPrefixList = $inputShortPrefixes ? array_keys($prefixList) : $prefixList;

@@ -4,7 +4,7 @@ namespace Guru\PhoneNumberFormatterBundle\Formatter;
 
 use Guru\PhoneNumberFormatterBundle\Model\PhoneNumber;
 
-class FormatterMy extends FormatterAbstract
+class FormatterMy extends FormatterAbstract implements FormatterInterface
 {
     // landlines
     private $prefixDestinationCodesShort = array();
