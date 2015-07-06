@@ -1,0 +1,24 @@
+language: php
+
+php:
+  - 5.3.3
+  - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+
+matrix:
+  allow_failures:
+    - php: hhvm
+
+before_script:
+    - composer install --prefer-source
+    - git config --global user.name travis-ci
+    - git config --global user.email travis@example.com
+
+script:
+    - vendor/bin/phpunit Tests/
+
+git:
+  depth: 5
