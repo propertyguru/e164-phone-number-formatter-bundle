@@ -128,7 +128,7 @@ class Formatter
         $numberString = '';
         //add country code
         if ($E164->getCountryCode() !== '' && $E164->getCountryCode() !== null) {
-            $numberString .= ($numberString != '' ? ' ' :'').'+'.$E164->getCountryCode();
+            $numberString .= '+'.$E164->getCountryCode();
         }
 
         //add region / mobile code
