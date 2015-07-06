@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/propertyguru/E164-phone-number-formatter-bundle.svg?branch=master)](https://travis-ci.org/propertyguru/E164-phone-number-formatter-bundle)
+
 # E164-phone-number-formatter-bundle
 Bundle to format phone numbers in E164 format
 
