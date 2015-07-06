@@ -3,10 +3,9 @@
     "type": "project",
     "description": "Propertygurus's phone number formatter",
     "autoload": {
-        "psr-0": {
-            "Guru\\PhoneNumberFormatterBundle": ""
-        }
+        "psr-0": { "Guru\\PhoneNumberFormatterBundle": "" }
     },
+    "target-dir": "Guru/PhoneNumberFormatterBundle",
     "repositories": [
     ],
     "require": {
