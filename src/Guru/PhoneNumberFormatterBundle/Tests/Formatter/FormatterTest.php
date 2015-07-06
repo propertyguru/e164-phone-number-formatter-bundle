@@ -5,6 +5,8 @@ namespace Guru\PhoneNumberFormatterBundle\Tests\Formatter;
 use Guru\PhoneNumberFormatterBundle\Formatter\Formatter;
 use Guru\PhoneNumberFormatterBundle\Formatter\FormatterMy;
 use Guru\PhoneNumberFormatterBundle\Formatter\FormatterId;
+use Guru\PhoneNumberFormatterBundle\Formatter\FormatterTh;
+use Guru\PhoneNumberFormatterBundle\Formatter\FormatterSg;
 use Guru\PhoneNumberFormatterBundle\Model\PhoneNumber;
 use \Mockery as m;
 
@@ -28,6 +30,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $const = array(
+            //malaysia
             'guru_phone_number_formatter.format.my.prefix.landline.short' => array(
                 '2' => '02'
             ),
@@ -40,6 +43,8 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             'guru_phone_number_formatter.format.my.prefix.mobile.long' => array(
                 '011',
             ),
+
+            //indonesia
             'guru_phone_number_formatter.format.id.prefix.landline.lengths' => array(
                 7,8
             ),
@@ -51,6 +56,26 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
             'guru_phone_number_formatter.format.id.prefix.mobile' => array(
                 '0814' => [11,12],
+            ),
+
+            //thailand
+            'guru_phone_number_formatter.format.th.landline.length' => 9,
+            'guru_phone_number_formatter.format.th.prefix.landline' => array(
+                2 => '02',
+                32 => '032',
+            ),
+            'guru_phone_number_formatter.format.th.mobile.length' => 10,
+            'guru_phone_number_formatter.format.th.prefix.mobile' => array(
+                '80' => '080',
+            ),
+
+            //singapore
+            'guru_phone_number_formatter.format.sg.length' => 8,
+            'guru_phone_number_formatter.format.sg.prefix.voip' => 3,
+            'guru_phone_number_formatter.format.sg.prefix.landline' => 6,
+            'guru_phone_number_formatter.format.sg.mobile.rules' => array(
+                '8' => '8[1-9]',
+                '9' => '9[0-8]',
             ),
         );
 
@@ -92,6 +117,20 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
         $regionFormatter->setLandlinePrefixCodesLong($this->container->getParameter('guru_phone_number_formatter.format.id.prefix.landline.long'));
         $regionFormatter->setMobileCodes($this->container->getParameter('guru_phone_number_formatter.format.id.prefix.mobile'));
         $formatter->addRegionFormatter('id', $regionFormatter);
+
+        $regionFormatter = new FormatterTh($this->container);
+        $regionFormatter->setLandlineNumberLength($this->container->getParameter('guru_phone_number_formatter.format.th.landline.length'));
+        $regionFormatter->setLandlinePrefixCodes($this->container->getParameter('guru_phone_number_formatter.format.th.prefix.landline'));
+        $regionFormatter->setMobileNumberLength($this->container->getParameter('guru_phone_number_formatter.format.th.mobile.length'));
+        $regionFormatter->setMobilePrefixCodes($this->container->getParameter('guru_phone_number_formatter.format.th.prefix.mobile'));
+        $formatter->addRegionFormatter('th', $regionFormatter);
+
+        $regionFormatter = new FormatterSg($this->container);
+        $regionFormatter->setNumberLength($this->container->getParameter('guru_phone_number_formatter.format.sg.length'));
+        $regionFormatter->setLandlinePrefix($this->container->getParameter('guru_phone_number_formatter.format.sg.prefix.voip'));
+        $regionFormatter->setVoipPrefix($this->container->getParameter('guru_phone_number_formatter.format.sg.prefix.landline'));
+        $regionFormatter->setMobileRules($this->container->getParameter('guru_phone_number_formatter.format.sg.mobile.rules'));
+        $formatter->addRegionFormatter('sg', $regionFormatter);
 
         return $formatter;
     }
@@ -564,16 +603,188 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 '0252123456789',
             ),
 
-            // singapore - not defined
-            'outside defined params - sg' => array(
+            //th
+            'th - outside defined params' => array(
                 array(
-                    'countryCode' => '65',
+                    'countryCode' => '66',
                     'subscriberNumber' => '123',
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
                 ),
+                '66',
+                '123',
+            ),
+            'th - landline - single digit' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '1234567',
+                    'nationalDestinationCode' => '02',
+                    'nationalDestinationCodeInternational' => '2',
+                    'isMobile' => false,
+                ),
+                '66',
+                '21234567',
+            ),
+            'th - landline - single digit - long' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '1234567',
+                    'nationalDestinationCode' => '02',
+                    'nationalDestinationCodeInternational' => '2',
+                    'isMobile' => false,
+                ),
+                '66',
+                '021234567',
+            ),
+            'th - landline - multi digit' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '123456',
+                    'nationalDestinationCode' => '032',
+                    'nationalDestinationCodeInternational' => '32',
+                    'isMobile' => false,
+                ),
+                '66',
+                '32123456',
+            ),
+            'th - landline - tmulti digi - long' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '123456',
+                    'nationalDestinationCode' => '032',
+                    'nationalDestinationCodeInternational' => '32',
+                    'isMobile' => false,
+                ),
+                '66',
+                '032123456',
+            ),
+            'th - landline - too long' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '03212345678789',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                ),
+                '66',
+                '03212345678789',
+            ),
+
+            //mobile
+            'th - mobile - short' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '6493950',
+                    'nationalDestinationCode' => '080',
+                    'nationalDestinationCodeInternational' => '80',
+                    'isMobile' => true,
+                ),
+                '66',
+                '806493950',
+            ),
+            'th - mobile - long' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '6493950',
+                    'nationalDestinationCode' => '080',
+                    'nationalDestinationCodeInternational' => '80',
+                    'isMobile' => true,
+                ),
+                '66',
+                '0806493950',
+            ),
+            'th - mobile - too long' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '0806493950789',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                ),
+                '66',
+                '0806493950789',
+            ),
+
+            //landline
+            'sg - landline' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '61234567',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                ),
                 '65',
+                '61234567',
+            ),
+            'sg - voip' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '31234567',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                ),
+                '65',
+                '31234567',
+            ),
+            'sg - mobile - starts with 8 - ok' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '81234567',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => true,
+                ),
+                '65',
+                '81234567',
+            ),
+            'sg - mobile - starts with 8 - not ok' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '80234567',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                ),
+                '65',
+                '80234567',
+            ),
+
+            'sg - mobile - starts with 9 - ok' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '91234567',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => true,
+                ),
+                '65',
+                '91234567',
+            ),
+            'sg - mobile - starts with 9 - not ok' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '99234567',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                ),
+                '65',
+                '99234567',
+            ),
+
+            // us - not defined
+            'outside defined params - us' => array(
+                array(
+                    'countryCode' => '1',
+                    'subscriberNumber' => '123',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                ),
+                '1',
                 '123',
             ),
         );
@@ -647,7 +858,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 )
             ),
             'id - with code - length test - 8 digit' => array(
-                '+62 2521 2345',
+                '+62 252 12345',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '12345',
@@ -666,7 +877,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 )
             ),
             'id - with code - length test - 9 digit' => array(
-                '+62 2 5212 3456',
+                '+62 252 123 456',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '123456',
@@ -685,7 +896,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 )
             ),
             'id - with code - length test - 10 digit' => array(
-                '+62 25 2123 4567',
+                '+62 252 123 4567',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '1234567',
@@ -695,7 +906,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             'id - no code - length test - 11 digit' => array(
-                '+62 1 23 4567 8901',
+                '+62 123 4567 8901',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '12345678901',
@@ -704,7 +915,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 )
             ),
             'id - with code - length test - 11 digit' => array(
-                '+62 2 52 1234 5678',
+                '+62 252 1234 5678',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '12345678',
@@ -714,7 +925,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             'id - no code - length test - > 11 digit' => array(
-                '+62 12 34 56 78 90 11 23 4567 8901',
+                '+62 12 3456 7890 1123 4567 8901',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '1234567890112345678901',
@@ -723,7 +934,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 )
             ),
             'id - with code - length test - > 11 digit' => array(
-                '+62 2 52 12 34 56 78 90 11 23 4567 8901',
+                '+62 252 12 3456 7890 1123 4567 8901',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '1234567890112345678901',
@@ -743,7 +954,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
             'my - with code - length test - 7 digits' => array(
-                '+60 101 2345',
+                '+60 10 12345',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '12345',
@@ -753,7 +964,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             'my - no code - length test - 8 digits' => array(
-                '+601 234 5678',
+                '+60 1234 5678',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '12345678',
@@ -762,7 +973,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
             'my - with code - length test - 8 digits' => array(
-                '+601 012 3456',
+                '+60 10 123 456',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '123456',
@@ -772,7 +983,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             'my - no code - length test - 9 digits' => array(
-                '+6012 345 6789',
+                '+60 1 2345 6789',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '123456789',
@@ -781,7 +992,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),                
             ),
             'my - with code - length test - 9 digits' => array(
-                '+6010 123 4567',
+                '+60 10 123 4567',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '1234567',
@@ -791,7 +1002,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             'my - no code - length test - 10 digits' => array(
-                '+6012 3456 7890',
+                '+60 12 3456 7890',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '1234567890',
@@ -800,7 +1011,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
             'my - with code - length test - 10 digits' => array(
-                '+6010 1234 5678',
+                '+60 10 1234 5678',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '12345678',
@@ -810,7 +1021,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             'my - no code - length test - 11 digits' => array(
-                '+60123 4567 8901',
+                '+60 123 4567 8901',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '12345678901',
@@ -819,7 +1030,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
             'my - with code - length test - 11 digits' => array(
-                '+60101 2345 6789',
+                '+60 10 1 2345 6789',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '123456789',
@@ -829,7 +1040,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             'my - no code - length test - > 11 digits' => array(
-                '+601234 5678 9012',
+                '+60 1234 5678 9012',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '123456789012',
@@ -838,7 +1049,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
             'my - with code - length test - > 11 digits' => array(
-                '+601012 3456 7890',
+                '+60 10 12 3456 7890',
                 array(
                     'countryCode' => '60',
                     'subscriberNumber' => '1234567890',
@@ -847,10 +1058,8 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
 
-
-
             'singapore - not defined' => array(
-                '+62123',
+                '+62 123',
                     array(
                     'countryCode' => '62',
                     'subscriberNumber' => '123',

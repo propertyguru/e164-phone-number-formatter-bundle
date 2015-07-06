@@ -125,11 +125,31 @@ class Formatter
             return $E164->getSubscriberNumber();
         }
 
-        return ($E164->getCountryCode() !== '' && $E164->getCountryCode() !== null ? '+'.$E164->getCountryCode() : '')
-            . $this->formatNumberByDigits(
-                $E164->getNationalDestinationCodeInternational().$E164->getSubscriberNumber(),
-                $E164->getCountryCode()
-            );
+        $numberString = '';
+        //add country code
+        if ($E164->getCountryCode() !== '' && $E164->getCountryCode() !== null) {
+            $numberString .= ($numberString != '' ? ' ' :'').'+'.$E164->getCountryCode();
+        }
+
+        //add region / mobile code
+        if ($E164->getNationalDestinationCode() != '') {
+            //see if we need local / international code
+            $code = '';
+            if ($E164->getCountryCode() !== '' && $E164->getCountryCode() !== null) {
+                $code = $E164->getNationalDestinationCodeInternational();
+            } else {
+                $code = $E164->getNationalDestinationCode();
+            }
+
+            $numberString .= ($numberString != '' ? ' ' :'').$code;
+        }
+
+        $numberString .= ($numberString != '' ? ' ' :'').$this->formatNumberByDigits(
+            $E164->getSubscriberNumber(),
+            $E164->getCountryCode()
+        );
+
+        return $numberString;
     }
 
     private function formatNumberByDigits($number, $countryCode)
@@ -137,7 +157,8 @@ class Formatter
         $regionCode = $this->getRegionCodeFromCountryCode($countryCode);
         $regionFormatter = $this->getRegionFormatter($regionCode);
         if (!$regionFormatter) {
-            return $number;
+            //use the generic formatter
+            return FormatterAbstract::formatNumberByDigits($number);
         }
         return $regionFormatter->formatNumberByDigits($number);
     }

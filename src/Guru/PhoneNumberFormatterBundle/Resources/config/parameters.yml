@@ -709,3 +709,10 @@ parameters:
         89: '089' #DTAC
         90: '090' #DTAC + AIS + True Move H
         91: '091' #DTAC
+
+    guru_phone_number_formatter.format.sg.length: 8
+    guru_phone_number_formatter.format.sg.prefix.voip: 3
+    guru_phone_number_formatter.format.sg.prefix.landline: 6
+    guru_phone_number_formatter.format.sg.mobile.rules:
+        8: 8[1-9]
+        9: 9[0-8]

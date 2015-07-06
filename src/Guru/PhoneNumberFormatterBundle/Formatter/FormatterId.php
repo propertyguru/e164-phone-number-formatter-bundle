@@ -102,40 +102,6 @@ class FormatterId extends FormatterAbstract implements FormatterInterface
         }
     }
 
-    public function formatNumberByDigits($number = '')
-    {
-        $nrLen = strlen($number);
-        if ($nrLen == 6){
-            return ' '.substr($number, 0, $nrLen - 3).' '.substr($number, $nrLen - 3, 3);
-        } elseif ($nrLen == 7){
-            return ' '.substr($number, 0, $nrLen - 4).' '.substr($number, $nrLen - 4, 4);
-        } elseif ($nrLen >= 8){
-            $remDigits = $nrLen - 8;
-            $chunkSplit = '';
-            $pastChars = 0;
-            $splitChar = substr($number, 0, $nrLen - 8);
-            $remLen = strlen($splitChar);
-            while ($remDigits > 0) {
-                $size = min($remDigits, 2);
-                $chunk = substr($splitChar, $remLen - $pastChars - $size, $size);
-                $chunkSplit = ' '.$chunk.$chunkSplit;
-                $remDigits -= $size;
-                $pastChars += $size;
-            }
-            return $chunkSplit.' '.substr($number, $nrLen - 8, 4).' '.substr($number, $nrLen - 4, 4);
-        }
-        return $number;
-    }
-
-    private function addLengthPrefix($length, $prefix)
-    {
-        if (!isset($this->lengthMobilePrefixes[$length])) {
-            $this->lengthMobilePrefixes[$length] = array();
-        }
-
-        $this->lengthMobilePrefixes[$length][$prefix] = $prefix;
-    }
-
     private function initMobilePrefixes()
     {
         if (!is_null($this->lengthMobilePrefixes)) {
@@ -144,8 +110,8 @@ class FormatterId extends FormatterAbstract implements FormatterInterface
         $this->lengthMobilePrefixes = array();
         foreach ($this->mobilePrefixes as $prefix => $lengths) {
             foreach ($lengths as $length){
-                $this->addLengthPrefix($length, $prefix);
-                $this->addLengthPrefix($length - 1, ltrim($prefix, '0'));
+                $this->addLengthPrefix($this->lengthMobilePrefixes, $length, $prefix);
+                $this->addLengthPrefix($this->lengthMobilePrefixes, $length - 1, ltrim($prefix, '0'), $prefix);
             }
         }
     }
