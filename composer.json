@@ -1,12 +1,11 @@
 {
     "name": "propertyguru/E164-phone-number-formatter-bundle",
-    "type": "project",
+    "type": "library",
     "description": "Propertygurus's phone number formatter",
     "autoload": {
-        "psr-0": {
-            "Guru\\PhoneNumberFormatterBundle": ""
-        }
+        "psr-0": { "Guru\\PhoneNumberFormatterBundle": "" }
     },
+    "target-dir": "Guru/PhoneNumberFormatterBundle",
     "repositories": [
     ],
     "require": {
@@ -19,9 +18,6 @@
         "squizlabs/php_codesniffer": ">=2.3.0"
     },
     "scripts": {
-    },
-    "config": {
-        "bin-dir": "bin"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
