@@ -39,7 +39,7 @@ abstract class FormatterAbstract
 
     /**
      * Helper function
-     * Generate prefix lists grouped by nuimber length
+     * Generate prefix lists grouped by number length
     **/
     protected function addLengthPrefix(&$lengthPrefixArray, $length, $prefixKey, $prefixValue = null)
     {
