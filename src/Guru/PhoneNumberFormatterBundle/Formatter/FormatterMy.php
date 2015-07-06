@@ -2,7 +2,9 @@
 
 namespace Guru\PhoneNumberFormatterBundle\Formatter;
 
-class FormatterMy implements FormatterInterface
+use Guru\PhoneNumberFormatterBundle\Model\PhoneNumber;
+
+class FormatterMy extends FormatterAbstract implements FormatterInterface
 {
     // landlines
     private $prefixDestinationCodesShort = array();
@@ -41,39 +43,24 @@ class FormatterMy implements FormatterInterface
         //check if mobile
         // in case the prefix does not contain the leading 0
         if ($numberLen == 9) {
-            $matches = array();
-            preg_match_all('/^('.implode('|', array_keys($this->shortMobileCarrierPrefix)).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                return array(
-                    $this->shortMobileCarrierPrefix[$matches[1][0]],
-                    $matches[1][0],
-                    $matches[2][0],
-                    true
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->shortMobileCarrierPrefix, $number, true);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(true);
+                return $phoneNumber;
             }
         // with leading 0
         } elseif ($numberLen == 10) {
-            $matches = array();
-            preg_match_all('/^('.implode('|', $this->shortMobileCarrierPrefix).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                return array(
-                    $matches[1][0],
-                    ltrim($matches[1][0], '0'),
-                    $matches[2][0],
-                    true
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->shortMobileCarrierPrefix, $number);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(true);
+                return $phoneNumber;
             }
         // extended mobile numbers 011 prefix
         } elseif ($numberLen == 11) {
-            $matches = array();
-            preg_match_all('/^('.implode('|', $this->longMobileCarrierPrefix).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                return array(
-                    $matches[1][0],
-                    ltrim($matches[1][0], '0'),
-                    $matches[2][0],
-                    true
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->longMobileCarrierPrefix, $number);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(true);
+                return $phoneNumber;
             }
         }
 
@@ -88,57 +75,37 @@ class FormatterMy implements FormatterInterface
 
         //try extended 1 digit simple codes
         if ($trySimpleOneDigitCodes) {
-            $matches = array();
-            preg_match_all('/^('.implode('|', array_keys($this->prefixDestinationCodesShort)).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                return array(
-                    $this->prefixDestinationCodesShort[$matches[1][0]],
-                    $matches[1][0],
-                    $matches[2][0],
-                    false
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->prefixDestinationCodesShort, $number, true);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(false);
+                return $phoneNumber;
             }
         }
         //try extended 1 digit codes
         if ($tryPrefixOneDigitCodes) {
-            $matches = array();
-            preg_match_all('/^('.implode('|', $this->prefixDestinationCodesShort).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                return array(
-                    $matches[1][0],
-                    ltrim($matches[1][0], '0'),
-                    $matches[2][0],
-                    false
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->prefixDestinationCodesShort, $number);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(false);
+                return $phoneNumber;
             }
         }
         //try simple 2 digit codes
         if ($trySimpleTwoDigitCodes) {
-            $matches = array();
-            preg_match_all('/^('.implode('|', array_keys($this->prefixDestinationCodesLong)).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                return array(
-                    $this->prefixDestinationCodesLong[$matches[1][0]],
-                    $matches[1][0],
-                    $matches[2][0],
-                    false
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->prefixDestinationCodesLong, $number, true);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(false);
+                return $phoneNumber;
             }
         }
         //try extended 2 digit codes
         if ($tryPrefixTwoDigitCodes) {
-            $matches = array();
-            preg_match_all('/^('.implode('|', $this->prefixDestinationCodesLong).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                return array(
-                    $matches[1][0],
-                    ltrim($matches[1][0], '0'),
-                    $matches[2][0],
-                    false
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->prefixDestinationCodesLong, $number);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(false);
+                return $phoneNumber;
             }
         }
-        return array(null, null, $number, false);
+
     }
 
     public function formatNumberByDigits($number = '')

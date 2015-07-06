@@ -5,6 +5,7 @@ namespace Guru\PhoneNumberFormatterBundle\Tests\Formatter;
 use Guru\PhoneNumberFormatterBundle\Formatter\Formatter;
 use Guru\PhoneNumberFormatterBundle\Formatter\FormatterMy;
 use Guru\PhoneNumberFormatterBundle\Formatter\FormatterId;
+use Guru\PhoneNumberFormatterBundle\Model\PhoneNumber;
 use \Mockery as m;
 
 /**
@@ -103,24 +104,11 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
         $this->initRegionFormatters($this->formatter);
 
         $actual = $this->formatter->numberToE194($number, $countryCode);
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual->toArray());
     }
 
     public function provideNumberToE194()
     {
-        return array(
-            'my - mobile - long' => array(
-                array(
-                    'countryCode' => '60',
-                    'subscriberNumber' => '12345678',
-                    'nationalDestinationCode' => '011',
-                    'nationalDestinationCodeInternational' => '11',
-                    'isMobile' => true,
-                ),
-                '60',
-                '01112345678',
-            ),
-        );
         return array(
             //my
             'my - outside defined params' => array(
@@ -328,7 +316,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'subscriberNumber' => '1234567',
                     'nationalDestinationCode' => '010',
                     'nationalDestinationCodeInternational' => '10',
-                    'isMobile' => false,
+                    'isMobile' => true,
                 ),
                 '60',
                 '101234567',
@@ -339,7 +327,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'subscriberNumber' => '1234567',
                     'nationalDestinationCode' => '010',
                     'nationalDestinationCodeInternational' => '10',
-                    'isMobile' => false,
+                    'isMobile' => true,
                 ),
                 '60',
                 '0101234567',
@@ -396,7 +384,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'subscriberNumber' => '814567890123',
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
-                    'isMobile' => true,
+                    'isMobile' => false, // not mobile because it's not recognised
                 ),
                 '62',
                 '814567890123',
@@ -429,7 +417,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'subscriberNumber' => '0814567890123',
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
-                    'isMobile' => true,
+                    'isMobile' => false, // not mobile because it's not recognised
                 ),
                 '62',
                 '0814567890123',
@@ -598,7 +586,13 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
     {
         $this->initRegionFormatters($this->formatter);
 
-        $actual = $this->formatter->formatByDigitCount($E194);
+        $phoneNumber = new PhoneNumber();
+        $phoneNumber->setCountryCode($E194['countryCode']);
+        $phoneNumber->setSubscriberNumber($E194['subscriberNumber']);
+        $phoneNumber->setNationalDestinationCode($E194['nationalDestinationCode']);
+        $phoneNumber->setNationalDestinationCodeInternational($E194['nationalDestinationCodeInternational']);
+
+        $actual = $this->formatter->formatByDigitCount($phoneNumber);
         $this->assertEquals($expected, $actual);
     }
 
