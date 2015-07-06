@@ -2,7 +2,9 @@
 
 namespace Guru\PhoneNumberFormatterBundle\Formatter;
 
-class FormatterId implements FormatterInterface
+use Guru\PhoneNumberFormatterBundle\Model\PhoneNumber;
+
+class FormatterId extends FormatterAbstract
 {
     private $lengthMobilePrefixes;
 
@@ -39,16 +41,10 @@ class FormatterId implements FormatterInterface
 
         //check if mobile
         if (isset($this->lengthMobilePrefixes[$numberLen])){
-            $matches = array();
-            preg_match_all('/^('.implode('|', array_keys($this->lengthMobilePrefixes[$numberLen])).')(.*)/', $number, $matches);
-            if (!empty($matches[1]) && !empty($matches[2])){
-                $actualCode = strpos($matches[1][0], '0') === 0 ? $matches[1][0] : '0'.$matches[1][0]; 
-                return array(
-                    $actualCode,
-                    ltrim($matches[1][0], '0'),
-                    $matches[2][0],
-                    true
-                );
+            $phoneNumber = $this->matchNumberPrefix($this->lengthMobilePrefixes[$numberLen], $number, true);
+            if ($phoneNumber) {
+                $phoneNumber->setIsMobile(true);
+                return $phoneNumber;
             }
         }
 
@@ -74,57 +70,36 @@ class FormatterId implements FormatterInterface
         foreach ($this->landlineLengths as $length) {
             //short
             if ($numberLen == $length + $lengthShort){
-                $matches = array();
-                preg_match_all('/^('.implode('|', array_keys($this->landlinePrefixesShort)).')(.*)/', $number, $matches);
-                if (!empty($matches[1]) && !empty($matches[2])){
-                    return array(
-                        $this->landlinePrefixesShort[$matches[1][0]],
-                        $matches[1][0],
-                        $matches[2][0],
-                        false
-                    );
+                $phoneNumber = $this->matchNumberPrefix($this->landlinePrefixesShort, $number, true);
+                if ($phoneNumber) {
+                    $phoneNumber->setIsMobile(false);
+                    return $phoneNumber;
                 }
             }
             if ($numberLen == $length + $lengthPrefixShort){
-                $matches = array();
-                preg_match_all('/^('.implode('|', $this->landlinePrefixesShort).')(.*)/', $number, $matches);
-                if (!empty($matches[1]) && !empty($matches[2])){
-                    return array(
-                        $matches[1][0],
-                        ltrim($matches[1][0], '0'),
-                        $matches[2][0],
-                        false
-                    );
+                $phoneNumber = $this->matchNumberPrefix($this->landlinePrefixesShort, $number);
+                if ($phoneNumber) {
+                    $phoneNumber->setIsMobile(false);
+                    return $phoneNumber;
                 }
             }
 
             //long
             if ($numberLen == $length + $lengthLong){
-                $matches = array();
-                preg_match_all('/^('.implode('|', array_keys($this->landlinePrefixesLong)).')(.*)/', $number, $matches);
-                if (!empty($matches[1]) && !empty($matches[2])){
-                    return array(
-                        $this->landlinePrefixesLong[$matches[1][0]],
-                        $matches[1][0],
-                        $matches[2][0],
-                        false
-                    );
+                $phoneNumber = $this->matchNumberPrefix($this->landlinePrefixesLong, $number, true);
+                if ($phoneNumber) {
+                    $phoneNumber->setIsMobile(false);
+                    return $phoneNumber;
                 }
             }
             if ($numberLen == $length + $lengthPrefixLong){
-                $matches = array();
-                preg_match_all('/^('.implode('|', $this->landlinePrefixesLong).')(.*)/', $number, $matches);
-                if (!empty($matches[1]) && !empty($matches[2])){
-                    return array(
-                        $matches[1][0],
-                        ltrim($matches[1][0], '0'),
-                        $matches[2][0],
-                        false
-                    );
+                $phoneNumber = $this->matchNumberPrefix($this->landlinePrefixesLong, $number);
+                if ($phoneNumber) {
+                    $phoneNumber->setIsMobile(false);
+                    return $phoneNumber;
                 }
             }
         }
-        return array(null, null, $number, false);
     }
 
     public function formatNumberByDigits($number = '')
