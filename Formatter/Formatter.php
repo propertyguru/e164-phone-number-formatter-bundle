@@ -122,7 +122,7 @@ class Formatter
     public function formatByDigitCount(PhoneNumber $E164)
     {
         if ($E164->getSubscriberNumber() === '' || $E164->getSubscriberNumber() === null){
-            return $E164->getSubscriberNumber();
+            return null;
         }
 
         $numberString = '';
