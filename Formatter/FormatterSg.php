@@ -25,12 +25,12 @@ class FormatterSg extends FormatterAbstract implements FormatterInterface
 
     public function setLandlinePrefix($prefix = '')
     {
-        $this->landlinePrefix = $prefix;
+        $this->landlinePrefix = (string)$prefix;
     }
 
     public function setVoipPrefix($prefix = '')
     {
-        $this->voipPrefix = $prefix;
+        $this->voipPrefix = (string)$prefix;
     }
 
     public function setMobileRules($rules = array())
