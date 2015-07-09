@@ -87,8 +87,16 @@ array(
 )
 ```
 
-
-
+## Weighted results
+Weights can be defined that some country codes are preffered over others.
+If a number can match more than one country, then only the one with the highest weight is considered
+```
+$formatter->setRegionWeights(array(
+    'my' => 1,
+    'sg' => 2
+));
+```
+Example : 98123123 can be either a malaysia or singaporean phone number.
 
 ## Contributors
 

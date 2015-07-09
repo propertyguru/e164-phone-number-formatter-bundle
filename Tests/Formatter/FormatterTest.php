@@ -32,7 +32,8 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
         $const = array(
             //malaysia
             'guru_phone_number_formatter.format.my.prefix.landline.short' => array(
-                '2' => '02'
+                '2' => '02',
+                '9' => '09',
             ),
             'guru_phone_number_formatter.format.my.prefix.landline.long' => array(
                 '80' => '080'
@@ -67,6 +68,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             'guru_phone_number_formatter.format.th.mobile.length' => 10,
             'guru_phone_number_formatter.format.th.prefix.mobile' => array(
                 '80' => '080',
+                '91' => '091',
             ),
 
             //singapore
@@ -157,6 +159,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '60',
                 '123',
@@ -168,6 +171,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '2123456',
@@ -179,6 +183,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '21234567',
@@ -190,6 +195,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '212345678',
@@ -201,6 +207,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '60',
                 '2123456789',
@@ -215,6 +222,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '02123456',
@@ -226,6 +234,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '021234567',
@@ -237,6 +246,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '0212345678',
@@ -248,6 +258,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '60',
                 '02123456789',
@@ -263,6 +274,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '80123456',
@@ -274,6 +286,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '801234567',
@@ -285,6 +298,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '8012345678',
@@ -296,6 +310,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '60',
                 '80123456789',
@@ -309,6 +324,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '080123456',
@@ -320,6 +336,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '0801234567',
@@ -331,6 +348,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '60',
                 '08012345678',
@@ -342,6 +360,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '60',
                 '080123456789',
@@ -356,6 +375,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '010',
                     'nationalDestinationCodeInternational' => '10',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '60',
                 '101234567',
@@ -367,6 +387,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '010',
                     'nationalDestinationCodeInternational' => '10',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '60',
                 '0101234567',
@@ -378,6 +399,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '011',
                     'nationalDestinationCodeInternational' => '11',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '60',
                 '01112345678',
@@ -391,6 +413,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '62',
                 '123',
@@ -402,6 +425,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0814',
                     'nationalDestinationCodeInternational' => '814',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '62',
                 '8145678901',
@@ -413,6 +437,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0814',
                     'nationalDestinationCodeInternational' => '814',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '62',
                 '81456789012',
@@ -424,6 +449,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false, // not mobile because it's not recognised
+                    'isValid' => false,
                 ),
                 '62',
                 '814567890123',
@@ -435,6 +461,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0814',
                     'nationalDestinationCodeInternational' => '814',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '62',
                 '08145678901',
@@ -446,6 +473,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0814',
                     'nationalDestinationCodeInternational' => '814',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '62',
                 '081456789012',
@@ -457,6 +485,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false, // not mobile because it's not recognised
+                    'isValid' => false,
                 ),
                 '62',
                 '0814567890123',
@@ -470,6 +499,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '021',
                     'nationalDestinationCodeInternational' => '21',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '211234567',
@@ -481,6 +511,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '021',
                     'nationalDestinationCodeInternational' => '21',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '2112345678',
@@ -492,6 +523,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '62',
                 '21123456789',
@@ -505,6 +537,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '021',
                     'nationalDestinationCodeInternational' => '21',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '0211234567',
@@ -516,6 +549,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '021',
                     'nationalDestinationCodeInternational' => '21',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '02112345678',
@@ -523,10 +557,11 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             'id - landline - short - with prefix - too long' => array(
                 array(
                     'countryCode' => '62',
-                    'subscriberNumber' => '21123456789',
+                    'subscriberNumber' => '021123456789',
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '62',
                 '021123456789',
@@ -541,6 +576,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0252',
                     'nationalDestinationCodeInternational' => '252',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '2521234567',
@@ -552,6 +588,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0252',
                     'nationalDestinationCodeInternational' => '252',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '25212345678',
@@ -563,6 +600,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '62',
                 '252123456789',
@@ -576,6 +614,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0252',
                     'nationalDestinationCodeInternational' => '252',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '02521234567',
@@ -587,6 +626,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '0252',
                     'nationalDestinationCodeInternational' => '252',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '62',
                 '025212345678',
@@ -598,6 +638,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '62',
                 '0252123456789',
@@ -611,6 +652,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '66',
                 '123',
@@ -622,6 +664,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '66',
                 '21234567',
@@ -633,6 +676,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '02',
                     'nationalDestinationCodeInternational' => '2',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '66',
                 '021234567',
@@ -644,17 +688,19 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '032',
                     'nationalDestinationCodeInternational' => '32',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '66',
                 '32123456',
             ),
-            'th - landline - tmulti digi - long' => array(
+            'th - landline - multi digi - long' => array(
                 array(
                     'countryCode' => '66',
                     'subscriberNumber' => '123456',
                     'nationalDestinationCode' => '032',
                     'nationalDestinationCodeInternational' => '32',
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '66',
                 '032123456',
@@ -666,6 +712,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '66',
                 '03212345678789',
@@ -679,6 +726,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '66',
                 '806493950',
@@ -690,6 +738,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => '080',
                     'nationalDestinationCodeInternational' => '80',
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '66',
                 '0806493950',
@@ -701,6 +750,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '66',
                 '0806493950789',
@@ -714,6 +764,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '65',
                 '61234567',
@@ -725,6 +776,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => true,
                 ),
                 '65',
                 '31234567',
@@ -736,6 +788,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '65',
                 '81234567',
@@ -747,6 +800,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '65',
                 '80234567',
@@ -759,6 +813,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => true,
+                    'isValid' => true,
                 ),
                 '65',
                 '91234567',
@@ -770,6 +825,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '65',
                 '99234567',
@@ -783,6 +839,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
+                    'isValid' => false,
                 ),
                 '1',
                 '123',
@@ -1066,7 +1123,119 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                 )
-            ),            
+            ),
         );
     }
+
+    /**
+     * @dataProvider provideNumberToE164CountryWeights
+    **/
+    public function testNumberToE164CountryWeights($expected, $countryCode, $number, $regionCode, $countryWeights)
+    {
+        $this->initRegionFormatters($this->formatter);
+
+        $this->formatter->setDefaultRegionCode($regionCode);
+        $this->formatter->setCountryCodeWeights($countryWeights);
+
+        $actual = $this->formatter->numberToE164($number, $countryCode);
+        $this->assertEquals($expected, $actual->toArray());
+    }
+
+    public function provideNumberToE164CountryWeights()
+    {
+        return array(
+            'both fail - use heaviest' => array(
+                array(
+                    'countryCode' => '62',
+                    'subscriberNumber' => '123',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                    'isValid' => false,
+                ),
+                '60',
+                '123',
+                'id',
+                array(
+                    '60' => 1,
+                    '62' => 2,
+                )
+            ),
+            'both fail - same weight - use provided country code' => array(
+                array(
+                    'countryCode' => '62',
+                    'subscriberNumber' => '123',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                    'isValid' => false,
+                ),
+                '62',
+                '123',
+                'my',
+                array(
+                    '60' => 1,
+                    '62' => 1,
+                )
+            ),
+
+            'one matched - use matched' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '81234568',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '65',
+                '81234568',
+                'id',
+                array(
+                    '60' => 1,
+                    '62' => 2,
+                    '65' => 0,
+                    '66' => 1000000,
+                )
+            ),
+            'two matched - same weight - use provided' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '1234567',
+                    'nationalDestinationCode' => '091',
+                    'nationalDestinationCodeInternational' => '91',
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '66',
+                '0911234567',
+                'my',
+                array(
+                    '60' => 1,
+                    '62' => 1,
+                    '65' => 1,
+                    '66' => 1,
+                )
+            ),
+            'two matched - different weight - use provided' => array(
+                array(
+                    'countryCode' => '60',
+                    'subscriberNumber' => '11234567',
+                    'nationalDestinationCode' => '09',
+                    'nationalDestinationCodeInternational' => '9',
+                    'isMobile' => false,
+                    'isValid' => true,
+                ),
+                '66',
+                '0911234567',
+                'my',
+                array(
+                    '60' => 2,
+                    '62' => 1,
+                    '65' => 1,
+                    '66' => 1,
+                )
+            ),
+        );
+    }    
 }

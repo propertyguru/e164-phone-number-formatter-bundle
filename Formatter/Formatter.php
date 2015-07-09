@@ -10,13 +10,14 @@ class Formatter
     private $countryCodesFlipped = array();
     private $regionFormatters = array();
     private $regionCode;
+    private $countryWeights = array();
 
     public function addRegionFormatter($regionCode, FormatterInterface $formatter)
     {
         $this->regionFormatters[$regionCode] = $formatter;
     }
 
-    public function setCountryCodes($countryCodes = array())
+    public function setCountryCodes(array $countryCodes = array())
     {
         $this->countryCodes = $countryCodes;
         $this->countryCodesFlipped = null;
@@ -25,6 +26,32 @@ class Formatter
     public function setDefaultRegionCode($regionCode = '')
     {
         $this->regionCode = $regionCode;
+    }
+
+    /**
+     * Set match weight based on the phone number country code
+     * Defined the order in which the matching occures
+     * If we match the same number with 2 countries, the "heaviest" one will be returned
+     * The same thing applies not non-matched possible options
+    **/
+    public function setCountryCodeWeights(array $weights = array())
+    {
+        $this->countryWeights = $weights;
+    }
+
+    /**
+     * Set match weight based on the region code
+     * Same as setCountryCodeWeights, but uses region codes instead of phone country codes for keys
+    **/
+    public function setRegionWeights(array $weights = array())
+    {
+        $this->countryWeights = array();
+        foreach ($weights as $regionCode => $weight) {
+            if (!isset($this->countryCodes[$regionCode])) {
+                continue;
+            }
+            $this->countryWeights[$this->countryCodes[$regionCode]] = $weight;
+        }
     }
 
     public function numberToE164($number = '', $countryCode = null)
@@ -36,32 +63,98 @@ class Formatter
         }
 
         // extract the country code from the number if possible
-        list($countryCode, $number) = $this->detectCountryCode($countryCode, $number);
+        // get all possibilities
+        $possibleCountryCodes = $this->getAllPossibleCountryCodes($countryCode, $number);
 
-        //cleanup the non-numeric chars 
-        $number = preg_replace('/[^0-9]+/', '', $number);
+        //the original match order matters also
+        //if the weights are the same
+        foreach ($possibleCountryCodes as $k => &$numberCode) {
+            $numberCode['order'] = $k;
+        }
 
-        // easier to read than 65 / 60 / etc
-        $regionCode = $this->getRegionCodeFromCountryCode($countryCode);
+        $foundValidNumbers = array();
+        $foundInvalidNumbers = array();
 
-        $regionFormatter = $this->getRegionFormatter($regionCode);
+        //re-order the country codes based on the suplied weights
+        uasort($possibleCountryCodes, array($this, 'comparePossibleNumbers'));
 
-        if (!$regionFormatter) {
+        $possibleCountryCodes = array_values($possibleCountryCodes);
+
+        if (empty($possibleCountryCodes)) {
+            //return default number
             $phoneNumber = new PhoneNumber();
             $phoneNumber->setCountryCode($countryCode);
             $phoneNumber->setSubscriberNumber($number);
             return $phoneNumber;
         }
+        foreach ($possibleCountryCodes as $numberCode) {
+            $countryCode = $numberCode['countryCode'];
+            $subscriberNumber = $numberCode['subscriberNumber'];
 
-        //extract area code
-        $phoneNumber = $regionFormatter->extractNationalDestinationCode($number, $countryCode);
-        if (!$phoneNumber) {
-            $phoneNumber = new PhoneNumber();
-            $phoneNumber->setSubscriberNumber($number);
+            // cleanup the non-numeric chars 
+            $subscriberNumber = preg_replace('/[^0-9]+/', '', $subscriberNumber);
+
+            // easier to read than 65 / 60 / etc
+            $regionCode = $this->getRegionCodeFromCountryCode($countryCode);
+
+            $regionFormatter = $this->getRegionFormatter($regionCode);
+
+            if (!$regionFormatter) {
+                $phoneNumber = new PhoneNumber();
+                $phoneNumber->setCountryCode($countryCode);
+                $phoneNumber->setSubscriberNumber($subscriberNumber);
+                $this->addListNumber($foundInvalidNumbers, $phoneNumber);
+                continue;
+            }
+
+            //extract area code
+            $phoneNumber = $regionFormatter->extractNationalDestinationCode($subscriberNumber, $countryCode);
+            if (!$phoneNumber) {
+                $phoneNumber = new PhoneNumber();
+                $phoneNumber->setCountryCode($countryCode);
+                $phoneNumber->setSubscriberNumber($subscriberNumber);
+                $this->addListNumber($foundInvalidNumbers, $phoneNumber);
+            } else {
+                $phoneNumber->setCountryCode($countryCode);
+                $phoneNumber->setIsValid(true);
+                $this->addListNumber($foundValidNumbers, $phoneNumber);
+            }
         }
-        $phoneNumber->setCountryCode($countryCode);
 
-        return $phoneNumber;
+        foreach ($foundValidNumbers as $countryCode => $numbers){
+            foreach ($numbers as $phoneNumber) {
+                return $phoneNumber;
+            }
+        }
+        foreach ($foundInvalidNumbers as $countryCode => $numbers){
+            foreach ($numbers as $phoneNumber) {
+                return $phoneNumber;
+            }
+        }
+    }
+
+    private function comparePossibleNumbers($a, $b)
+    {
+        $weightA = isset($this->countryWeights[$a['countryCode']]) ? $this->countryWeights[$a['countryCode']] + 0 : 0;
+        $weightB = isset($this->countryWeights[$b['countryCode']]) ? $this->countryWeights[$b['countryCode']] + 0 : 0;
+
+        if ($weightA == $weightB || $a == $b) {
+            if ($a['order'] == $b['order']) {
+                return 0;
+            }
+            return $a['order'] < $b['order'] ? -1 : 1;
+        }
+
+        return $weightA < $weightB ? 1 : -1;
+    }
+
+    private function addListNumber(&$list, $phoneNumber)
+    {
+        $countryCode = $phoneNumber->getCountryCode() ? $phoneNumber->getCountryCode() : '';
+        if (!isset($list [$countryCode])) {
+            $list [$countryCode] = array();
+        }
+        $list [$countryCode][]= $phoneNumber;
     }
 
     private function getRegionFormatter($regionCode)
@@ -72,10 +165,15 @@ class Formatter
         return $this->regionFormatters[$regionCode];
     }
 
-    private function detectCountryCode($countryCode, $number)
+    public function getAllPossibleCountryCodes($countryCode, $number)
     {
+        $countryCode = $countryCode !== '' ? $countryCode : null;
+
+        $possibleCodes = array();
+
         //cleanup the non-numeric chars 
         $number = preg_replace('/[^0-9\+]/', '', $number);
+        $numberWithoutCountryCode = null;
 
         if (strpos($number, '+') === 0 || strpos($number, '00') === 0) {
             if (strpos($number, '+') === 0){
@@ -87,27 +185,57 @@ class Formatter
             foreach ($this->countryCodes as $regionCode => $code){
                 if (strpos($checkNumber, $code) === 0){
                     $number = preg_replace('/^'.preg_quote($code, '/').'/', '', $checkNumber);
-                    return array((string)$code, $number);
+                    $possibleCodes []= array(
+                        'countryCode' => (string)$code,
+                        'subscriberNumber' => $number
+                    );
                 }
             }
 
             //if we didn't find the country code
             //remove the + / 00
-            $number = $checkNumber;
+            $numberWithoutCountryCode = $checkNumber;
+            if ($countryCode !== null){
+                $possibleCodes []= array(
+                    'countryCode' => (string)$countryCode,
+                    'subscriberNumber' => $numberWithoutCountryCode
+                );
+            }
         }
 
         // return specified country code
-        $countryCode = $countryCode !== '' ? $countryCode : null;
         if ($countryCode !== null){
-            return array((string)$countryCode, $number);
+            $possibleCodes []= array(
+                'countryCode' => (string)$countryCode,
+                'subscriberNumber' => $number
+            );
         }
 
         //return request country code if none found
         if (isset($this->countryCodes[$this->regionCode])) {
-            return array((string)$this->countryCodes[$this->regionCode], $number);
+            $possibleCodes []= array(
+                'countryCode' => (string)$this->countryCodes[$this->regionCode],
+                'subscriberNumber' => $number
+            );
+            if ($numberWithoutCountryCode !== null) {
+                $possibleCodes []= array(
+                    'countryCode' => (string)$this->countryCodes[$this->regionCode],
+                    'subscriberNumber' => $numberWithoutCountryCode
+                );
+            }
         }
 
-        return array(null, $number);
+        if (empty($possibleCodes)) {
+            $possibleCodes []=array(
+                'countryCode' => null,
+                'subscriberNumber' => $number
+            );
+        }
+
+        //remove duplicate - if any
+        $possibleCodes = array_values(array_unique($possibleCodes, SORT_REGULAR));
+
+        return $possibleCodes;
     }
 
     private function getRegionCodeFromCountryCode($countryCode)

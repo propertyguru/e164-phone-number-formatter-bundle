@@ -9,6 +9,7 @@ class PhoneNumber
     private $nationalDestinationCodeInternational;
     private $subscriberNumber;
     private $isMobile = false;
+    private $isValid = false;
 
     /* Setters */
     public function setCountryCode($countryCode = '')
@@ -34,6 +35,11 @@ class PhoneNumber
     public function setIsMobile($isMobile = false)
     {
         $this->isMobile = $isMobile;
+    }
+
+    public function setIsValid($isValid = false)
+    {
+        $this->isValid = $isValid;
     }
 
     /* Getters */
@@ -62,6 +68,11 @@ class PhoneNumber
         return $this->isMobile;
     }
 
+    public function getIsValid()
+    {
+        return $this->isValid;
+    }
+
     public function toArray()
     {
         return array(
@@ -70,6 +81,7 @@ class PhoneNumber
             'nationalDestinationCodeInternational' => $this->nationalDestinationCodeInternational,
             'subscriberNumber' => $this->subscriberNumber,
             'isMobile' => $this->isMobile,
+            'isValid' => $this->isValid,
         );
     }
 }
