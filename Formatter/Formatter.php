@@ -68,8 +68,8 @@ class Formatter
 
         //the original match order matters also
         //if the weights are the same
-        foreach ($possibleCountryCodes as $k => &$numberCode) {
-            $numberCode['order'] = $k;
+        foreach ($possibleCountryCodes as $k => $numberCode) {
+            $possibleCountryCodes[$k]['order'] = $k;
         }
 
         $foundValidNumbers = array();
@@ -87,7 +87,7 @@ class Formatter
             $phoneNumber->setSubscriberNumber($number);
             return $phoneNumber;
         }
-        foreach ($possibleCountryCodes as $k => &$numberCode) {
+        foreach ($possibleCountryCodes as $k => $numberCode) {
             $countryCode = $numberCode['countryCode'];
             $subscriberNumber = $numberCode['subscriberNumber'];
 
