@@ -87,7 +87,7 @@ class Formatter
             $phoneNumber->setSubscriberNumber($number);
             return $phoneNumber;
         }
-        foreach ($possibleCountryCodes as $numberCode) {
+        foreach ($possibleCountryCodes as $k => &$numberCode) {
             $countryCode = $numberCode['countryCode'];
             $subscriberNumber = $numberCode['subscriberNumber'];
 
