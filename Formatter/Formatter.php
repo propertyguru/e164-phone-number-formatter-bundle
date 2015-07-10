@@ -68,8 +68,8 @@ class Formatter
 
         //the original match order matters also
         //if the weights are the same
-        foreach ($possibleCountryCodes as $k => &$numberCode) {
-            $numberCode['order'] = $k;
+        foreach ($possibleCountryCodes as $k => $numberCode) {
+            $possibleCountryCodes[$k]['order'] = $k;
         }
 
         $foundValidNumbers = array();
@@ -87,7 +87,7 @@ class Formatter
             $phoneNumber->setSubscriberNumber($number);
             return $phoneNumber;
         }
-        foreach ($possibleCountryCodes as $numberCode) {
+        foreach ($possibleCountryCodes as $k => $numberCode) {
             $countryCode = $numberCode['countryCode'];
             $subscriberNumber = $numberCode['subscriberNumber'];
 
@@ -138,14 +138,22 @@ class Formatter
         $weightA = isset($this->countryWeights[$a['countryCode']]) ? $this->countryWeights[$a['countryCode']] + 0 : 0;
         $weightB = isset($this->countryWeights[$b['countryCode']]) ? $this->countryWeights[$b['countryCode']] + 0 : 0;
 
-        if ($weightA == $weightB || $a == $b) {
-            if ($a['order'] == $b['order']) {
-                return 0;
-            }
-            return $a['order'] < $b['order'] ? -1 : 1;
-        }
+        $embededPrefixCompare = $a['embededPrefix'] == $b['embededPrefix'] ? 0 : ($a['embededPrefix'] ? -1 : 1);
+        $orderCompare = $a['order'] == $b['order'] ? 0 : ($a['order'] < $b['order'] ? -1 : 1);
+        $weightCompare = $weightA == $weightB ? 0 : ($weightA < $weightB ? 1 : -1);
 
-        return $weightA < $weightB ? 1 : -1;
+        // if the numbers contain + or 00
+        if ($embededPrefixCompare) {
+            return $embededPrefixCompare;
+        }
+        // config country weight
+        if ($weightCompare){
+            return $weightCompare;
+        }
+        // original match order
+        if ($orderCompare) {
+            return $orderCompare;
+        }
     }
 
     private function addListNumber(&$list, $phoneNumber)
@@ -187,7 +195,8 @@ class Formatter
                     $number = preg_replace('/^'.preg_quote($code, '/').'/', '', $checkNumber);
                     $possibleCodes []= array(
                         'countryCode' => (string)$code,
-                        'subscriberNumber' => $number
+                        'subscriberNumber' => $number,
+                        'embededPrefix' => 1,
                     );
                 }
             }
@@ -198,7 +207,8 @@ class Formatter
             if ($countryCode !== null){
                 $possibleCodes []= array(
                     'countryCode' => (string)$countryCode,
-                    'subscriberNumber' => $numberWithoutCountryCode
+                    'subscriberNumber' => $numberWithoutCountryCode,
+                    'embededPrefix' => 0,
                 );
             }
         }
@@ -207,7 +217,8 @@ class Formatter
         if ($countryCode !== null){
             $possibleCodes []= array(
                 'countryCode' => (string)$countryCode,
-                'subscriberNumber' => $number
+                'subscriberNumber' => $number,
+                'embededPrefix' => 0,
             );
         }
 
@@ -215,12 +226,14 @@ class Formatter
         if (isset($this->countryCodes[$this->regionCode])) {
             $possibleCodes []= array(
                 'countryCode' => (string)$this->countryCodes[$this->regionCode],
-                'subscriberNumber' => $number
+                'subscriberNumber' => $number,
+                'embededPrefix' => 0,
             );
             if ($numberWithoutCountryCode !== null) {
                 $possibleCodes []= array(
                     'countryCode' => (string)$this->countryCodes[$this->regionCode],
-                    'subscriberNumber' => $numberWithoutCountryCode
+                    'subscriberNumber' => $numberWithoutCountryCode,
+                    'embededPrefix' => 0,
                 );
             }
         }
@@ -228,7 +241,8 @@ class Formatter
         if (empty($possibleCodes)) {
             $possibleCodes []=array(
                 'countryCode' => null,
-                'subscriberNumber' => $number
+                'subscriberNumber' => $number,
+                'embededPrefix' => 0
             );
         }
 

@@ -404,6 +404,30 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 '60',
                 '01112345678',
             ),
+            'my - contains embeded country code - valid number' => array(
+                array(
+                    'countryCode' => '60',
+                    'subscriberNumber' => '1234567',
+                    'nationalDestinationCode' => '010',
+                    'nationalDestinationCodeInternational' => '10',
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '62',
+                '+60101234567',
+            ),
+            'my - contains embeded country code - invalid number - valid indonesian' => array(
+                array(
+                    'countryCode' => '62',
+                    'subscriberNumber' => '5678901',
+                    'nationalDestinationCode' => '0814',
+                    'nationalDestinationCodeInternational' => '814',
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '62',
+                '+608145678901',
+            ),
 
             // id
             'id - outside defined params' => array(
@@ -643,6 +667,30 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 '62',
                 '0252123456789',
             ),
+            'id - contains embeded country code - valid number' => array(
+                array(
+                    'countryCode' => '62',
+                    'subscriberNumber' => '12345678',
+                    'nationalDestinationCode' => '0252',
+                    'nationalDestinationCodeInternational' => '252',
+                    'isMobile' => false,
+                    'isValid' => true,
+                ),
+                '60',
+                '+6225212345678',
+            ),
+            'id - contains embeded country code - invalid number - valid malaysian' => array(
+                array(
+                    'countryCode' => '60',
+                    'subscriberNumber' => '1234567',
+                    'nationalDestinationCode' => '010',
+                    'nationalDestinationCodeInternational' => '10',
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '60',
+                '+62101234567',
+            ),
 
             //th
             'th - outside defined params' => array(
@@ -755,6 +803,30 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 '66',
                 '0806493950789',
             ),
+            'th - contains embeded country code - valid number' => array(
+                array(
+                    'countryCode' => '66',
+                    'subscriberNumber' => '6493950',
+                    'nationalDestinationCode' => '080',
+                    'nationalDestinationCodeInternational' => '80',
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '60',
+                '+66806493950',
+            ),
+            'th - contains embeded country code - invalid number - valid malaysian' => array(
+                array(
+                    'countryCode' => '60',
+                    'subscriberNumber' => '1234567',
+                    'nationalDestinationCode' => '010',
+                    'nationalDestinationCodeInternational' => '10',
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '60',
+                '+66101234567',
+            ),
 
             //landline
             'sg - landline' => array(
@@ -829,6 +901,30 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
                 '65',
                 '99234567',
+            ),
+            'sg - contains embeded country code - valid number' => array(
+                array(
+                    'countryCode' => '65',
+                    'subscriberNumber' => '91234567',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '60',
+                '+6591234567',
+            ),
+            'sg - contains embeded country code - invalid number - valid malaysian' => array(
+                array(
+                    'countryCode' => '60',
+                    'subscriberNumber' => '1234567',
+                    'nationalDestinationCode' => '010',
+                    'nationalDestinationCodeInternational' => '10',
+                    'isMobile' => true,
+                    'isValid' => true,
+                ),
+                '60',
+                '+65101234567',
             ),
 
             // us - not defined
@@ -1228,6 +1324,25 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
                 ),
                 '66',
                 '0911234567',
+                'my',
+                array(
+                    '60' => 2,
+                    '62' => 1,
+                    '65' => 1,
+                    '66' => 1,
+                )
+            ),
+            'two matched - has embeded code - different weight - use region' => array(
+                array(
+                    'countryCode' => '60',
+                    'subscriberNumber' => '11234567',
+                    'nationalDestinationCode' => '09',
+                    'nationalDestinationCodeInternational' => '9',
+                    'isMobile' => false,
+                    'isValid' => true,
+                ),
+                '66',
+                '+65911234567',
                 'my',
                 array(
                     '60' => 2,
