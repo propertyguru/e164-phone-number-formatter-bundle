@@ -104,6 +104,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             'id' => '62',
             'sg' => '65',
             'th' => '66',
+            'ph' => '63',
         ));
 
         $regionFormatter = new FormatterMy($this->container);
@@ -928,17 +929,29 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             ),
 
             // us - not defined
-            'outside defined params - us' => array(
+            'outside defined params - country not defined - us' => array(
                 array(
                     'countryCode' => '1',
                     'subscriberNumber' => '123',
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
                     'isMobile' => false,
-                    'isValid' => false,
+                    'isValid' => true,
                 ),
                 '1',
                 '123',
+            ),
+            'outside defined params - country defined - missing algo - contains embedded country code - philippines' => array(
+                array(
+                    'countryCode' => '63',
+                    'subscriberNumber' => '123456789',
+                    'nationalDestinationCode' => null,
+                    'nationalDestinationCodeInternational' => null,
+                    'isMobile' => false,
+                    'isValid' => true,
+                ),
+                '62',
+                '+63123456789',
             ),
         );
     }

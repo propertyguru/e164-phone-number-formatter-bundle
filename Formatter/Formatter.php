@@ -100,10 +100,13 @@ class Formatter
             $regionFormatter = $this->getRegionFormatter($regionCode);
 
             if (!$regionFormatter) {
+                // since we have no specific algorithm for this country
+                // assume it's correct
                 $phoneNumber = new PhoneNumber();
                 $phoneNumber->setCountryCode($countryCode);
+                $phoneNumber->setIsValid(true);
                 $phoneNumber->setSubscriberNumber($subscriberNumber);
-                $this->addListNumber($foundInvalidNumbers, $phoneNumber);
+                $this->addListNumber($foundValidNumbers, $phoneNumber);
                 continue;
             }
 
