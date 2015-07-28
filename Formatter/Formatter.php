@@ -161,7 +161,7 @@ class Formatter
 
     private function addListNumber(&$list, $phoneNumber)
     {
-        $countryCode = $phoneNumber->getCountryCode() ? $phoneNumber->getCountryCode() : '';
+        $countryCode = $phoneNumber->getCountryCode() != '' ? $phoneNumber->getCountryCode() : '';
         if (!isset($list [$countryCode])) {
             $list [$countryCode] = array();
         }
@@ -178,7 +178,10 @@ class Formatter
 
     public function getAllPossibleCountryCodes($countryCode, $number)
     {
-        $countryCode = $countryCode !== '' ? $countryCode : null;
+        // ignore invalid country codes
+        if ($countryCode == '' || !$this->getRegionCodeFromCountryCode($countryCode)) {
+            $countryCode = null;
+        }
 
         $possibleCodes = array();
 
@@ -257,6 +260,8 @@ class Formatter
 
     private function getRegionCodeFromCountryCode($countryCode)
     {
+        //make sure that the country code is string
+        $countryCode = (string)$countryCode;
         if (!$this->countryCodesFlipped) {
             $this->countryCodesFlipped = array_flip($this->countryCodes);
         }
