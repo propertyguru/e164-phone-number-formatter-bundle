@@ -931,7 +931,7 @@ class FormatterTest extends \PHPUnit_Framework_TestCase
             // us - not defined
             'outside defined params - country not defined - us' => array(
                 array(
-                    'countryCode' => '1',
+                    'countryCode' => null,
                     'subscriberNumber' => '123',
                     'nationalDestinationCode' => null,
                     'nationalDestinationCodeInternational' => null,
