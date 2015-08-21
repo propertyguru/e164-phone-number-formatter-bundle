@@ -84,4 +84,28 @@ class PhoneNumber
             'isValid' => $this->isValid,
         );
     }
+
+    public static function fromArray(array $data = array())
+    {
+        $model = new static();
+        if (isset($data['countryCode'])) {
+            $model->setCountryCode($data['countryCode']);
+        }
+        if (isset($data['nationalDestinationCode'])) {
+            $model->setNationalDestinationCode($data['nationalDestinationCode']);
+        }
+        if (isset($data['nationalDestinationCodeInternational'])) {
+            $model->setNationalDestinationCodeInternational($data['nationalDestinationCodeInternational']);
+        }
+        if (isset($data['subscriberNumber'])) {
+            $model->setSubscriberNumber($data['subscriberNumber']);
+        }
+        if (isset($data['isMobile'])) {
+            $model->setIsMobile($data['isMobile']);
+        }
+        if (isset($data['isValid'])) {
+            $model->setIsValid($data['isValid']);
+        }
+        return $model;
+    }
 }
