@@ -1,5 +1,5 @@
 {
-    "name": "propertyguru/E164-phone-number-formatter-bundle",
+    "name": "propertyguru/e164-phone-number-formatter-bundle",
     "type": "library",
     "description": "Propertygurus's phone number formatter",
     "autoload": {
